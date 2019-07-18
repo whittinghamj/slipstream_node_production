@@ -13,7 +13,7 @@ echo "zend_extension = /opt/ioncube/ioncube_loader_lin_7.2.so" >> /etc/php/7.2/c
 echo "zend_extension = /opt/ioncube/ioncube_loader_lin_7.2.so" >> /etc/php/7.2/fpm/php.ini
 
 sudo systemctl restart nginx
-sudo systemctl restart php-fpm
+sudo systemctl restart php7.2-fpm
 
 cd /root/slipstrea/node
 
