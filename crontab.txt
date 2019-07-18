@@ -1,0 +1,6 @@
+
+# SlipstreamIPTV Cloud Panel - GIT Update
+* * * * * sh /root/slipstream/node/update.sh
+
+# SlipstreamIPTV Cloud Panel - Crons
+* * * * * php -q /root/slipstream/node/console/console.php cron >> /root/slipstream/node/logs/cron.log
