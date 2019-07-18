@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^live/(.*)/(.*) /streams.php?server_id=$1&stream_id=$2 [NC]
+RewriteRule ^play/hls/(.*)/(.*).ts /stream.php?stream_id=$1&segment_id=$2 [NC]
