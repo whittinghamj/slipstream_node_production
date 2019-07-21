@@ -45,12 +45,8 @@ if [ -n "$(command -v apt-get)" ]; then
 		echo "Applying NVIDIA Patch"
 		
 		nvidia_patch_file=/opt/nvidia-patch/patch.sh
-		if test -f "$nvidia_patch_file"; then
-			# nothing to do
-		else
-			cd /opt
-			git clone https://github.com/keylase/nvidia-patch.git
-		fi
+		cd /opt
+		git clone https://github.com/keylase/nvidia-patch.git
 
 		# run nvidia-patch
 		bash /opt/nvidia-patch/patch.sh -s
