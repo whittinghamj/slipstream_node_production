@@ -10,14 +10,18 @@ cd /root/slipstream/node && git --git-dir=/root/slipstream/node/.git pull origin
 
 # setup staging
 mkdir -p /opt/slipstream
-mkdir -p /var/www/html/play/tv_series
 mkdir -p /var/www/html/play/vod
+mkdir -p /var/www/html/play/tv_series
+mkdir -p /var/www/html/play/channels
+
+chmod 777 /var/www/html/play/vod
+chmod 777 /var/www/html/play/vod/*
 
 chmod 777 /var/www/html/play/tv_series
 chmod 777 /var/www/html/play/tv_series/*
 
-chmod 777 /var/www/html/play/vod
-chmod 777 /var/www/html/play/vod/*
+chmod 777 /var/www/html/play/channels
+chmod 777 /var/www/html/play/channels/*
 
 # copy files for http server
 cp /root/slipstream/node/www/stream_progress.php /var/www/html
@@ -33,8 +37,10 @@ cp /root/slipstream/node/www/customer_series.php /var/www/html
 cp /root/slipstream/node/www/customer_vod.php /var/www/html
 
 cp /root/slipstream/node/www/server_stats.php /var/www/html
-cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/tv_series
+
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/vod
+cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/tv_series
+cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/channels
 
 # set permissions to everyone for php files
 chmod 777 /var/www/html/*.php
