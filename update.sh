@@ -13,6 +13,7 @@ mkdir -p /opt/slipstream
 mkdir -p /var/www/html/play/vod
 mkdir -p /var/www/html/play/tv_series
 mkdir -p /var/www/html/play/channels
+mkdir -p /var/www/html/speedtest
 
 chmod 777 /var/www/html/play/vod
 chmod 777 /var/www/html/play/vod/*
@@ -42,6 +43,8 @@ cp /root/slipstream/node/www/server_stats.php /var/www/html
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/vod
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/tv_series
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/channels
+
+cp -R /root/slipstream/node/www/speedtest /var/www/html
 
 # set permissions to everyone for php files
 chmod 777 /var/www/html/*.php
