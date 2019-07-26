@@ -46,6 +46,8 @@ cp /root/slipstream/node/www/customer_channel.php /var/www/html
 
 cp /root/slipstream/node/www/server_stats.php /var/www/html
 
+cp /root/slipstream/node/www/scan_folder_files.php /var/www/html
+
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/vod
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/tv_series
 cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/channels
