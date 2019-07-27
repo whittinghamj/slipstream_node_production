@@ -70,6 +70,14 @@ sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 5000M/' /etc/php/7.2/fp
 sed -i 's/default_socket_timeout = 60/default_socket_timeout = 600/' /etc/php/7.2/fpm/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 5000M/' /etc/php/7.2/fpm/php.ini
 
+# grant www-data sudo access
+sudo_status=$(cat /etc/sudoers | grep www-data | wc -l)
+
+if [ "$sudo_status" -eq "0" ]; then
+   echo "Adding www-data to sudo group.";
+   echo "www-data    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+fi
+
 # check for updated nginx.conf file
 file1="/root/slipstream/node/config/nginx.conf"
 file2="/etc/nginx/nginx.conf"
