@@ -1,11 +1,16 @@
 #!/bin/bash
 
-for i in *.mkv; do
+FOLDER=$1
+
+find $FOLDER -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+find $FOLDER -depth -name "*'*" -execdir rename "s/\'/_/g" "{}" \;
+
+for i in $FOLDER/*.mkv; do
     ffmpeg -hide_banner -loglevel debug -err_detect ignore_err -y -threads 8 -i "$i" -codec copy "${i%.*}.mp4"
 done
-rm -rf *.mkv
+rm -rf $FOLDER/*.mkv
 
-for i in *.m4v; do
+for i in $FOLDER/*.m4v; do
     ffmpeg -hide_banner -loglevel debug -err_detect ignore_err -y -threads 8 -i "$i" -codec copy "${i%.*}.mp4"
 done
 rm -rf *.m4v
@@ -15,9 +20,9 @@ rm -rf *.m4v
 # done
 # rm -rf *.avi
 
-for i in *\'* ; do mv -v "$i" "${i/\'/}" ; done
+# for i in *\'* ; do mv -v "$i" "${i/\'/}" ; done
 
-find /mnt/drive_2/tv/test/ -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+
 
 echo " "
 echo "Finished"

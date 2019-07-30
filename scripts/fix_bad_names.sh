@@ -1,24 +1,10 @@
 #!/bin/bash
 
-for i in *.mkv; do
-    ffmpeg -hide_banner -loglevel debug -err_detect ignore_err -y -threads 8 -i "$i" -codec copy "${i%.*}.mp4"
-done
+# get base folder
+WORKING_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-rm -rf *.mkv
+FOLDER=$1
 
-for i in *.m4v; do
-    ffmpeg -hide_banner -loglevel debug -err_detect ignore_err -y -threads 8 -i "$i" -codec copy "${i%.*}.mp4"
-done
-
-rm -rf *.m4v
-
-for i in *.avi; do
-    ffmpeg -hide_banner -loglevel debug -err_detect ignore_err -y -threads 8 -i "$i" -codec copy "${i%.*}.mp4"
-done
-
-rm -rf *.avi
-
-
-
-echo " "
-echo "Finished"
+find $FOLDER -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+find $FOLDER -depth -name "*'*" -execdir rename "s/\'/_/g" "{}" \;
+find $FOLDER -depth -name "*,*" -execdir rename 's/,//g' "{}" \;
