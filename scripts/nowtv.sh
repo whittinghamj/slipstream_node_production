@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # Name: NowTV Management Script
-# Author: GTV
-# Created: 03 Feb 2019
+# Author: Jamie Whittingham
+# Updated: 21 Aug 2019
 # Version 1.0
-
 
 #vars
 IP_ADDRESS=$1
