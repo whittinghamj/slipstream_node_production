@@ -187,7 +187,7 @@ fi
 
 # load the channel
 echo 'NowTV ('$IP_ADDRESS') Loading '$channel_name;
-curl -d '' http://$IP_ADDRESS:8060/launch/26614?contentID=$contentID;
+curl -d '' http://$IP_ADDRESS:8060/launch/20242?contentID=$contentID;
 # echo http://$IP_ADDRESS:8060/launch/26614?contentID=$contentID
 
 echo Complete.;

@@ -37,6 +37,7 @@ cp /root/slipstream/node/www/streams.php /var/www/html
 cp /root/slipstream/node/www/htaccess.txt /var/www/html/.htaccess
 cp /root/slipstream/node/www/index.html /var/www/html
 cp /root/slipstream/node/www/phpinfo.php /var/www/html
+cp /root/slipstream/node/www/api.php /var/www/html
 cp /root/slipstream/node/www/test.php /var/www/html
 
 cp /root/slipstream/node/www/customer_stream.php /var/www/html
