@@ -126,19 +126,19 @@ fi
 if [ "$CHANNEL" = "sky_cinema_premiere" ]; then
 	channel_name='Sky Cinema Premiere'
 	contentID=1409
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_megahits" ]; then
 	channel_name='Sky Cinema Megahits'
 	contentID=1814
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_greats" ]; then
 	channel_name='Sky Cinema Greats'
 	contentID=1815
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_disney" ]; then
@@ -149,43 +149,43 @@ fi
 if [ "$CHANNEL" = "sky_cinema_family" ]; then
 	channel_name='Sky Cinema Family'
 	contentID=1808
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_action" ]; then
 	channel_name='Sky Cinema Action'
 	contentID=1001
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_comedy" ]; then
 	channel_name='Sky Cinema Comedy'
 	contentID=1002
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_thriller" ]; then
 	channel_name='Sky Cinema Thriller'
 	contentID=1818
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_drama" ]; then
 	channel_name='Sky Cinema Drama'
 	contentID=1816
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_scifi" ]; then
 	channel_name='Sky Cinema SciFi'
 	contentID=1807
-	PIN=1
+	PIN='1'
 fi
 
 if [ "$CHANNEL" = "sky_cinema_select" ]; then
 	channel_name='Sky Cinema Select'
 	contentID=1811
-	PIN=1
+	PIN='1'
 fi
 
 
