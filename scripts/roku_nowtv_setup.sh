@@ -1,36 +1,23 @@
 #!/bin/bash
 
-# Name: Roku Management Script
-# Author: delta1372
-# Created: 21 Aug 2019
+# Name: Roku NowTV Login Script
+# Author: GTV
+# Created: 03 Feb 2019
 # Version 1.0
+
 
 #vars
 IP_ADDRESS=$1
-CHANNEL=$2
 
-PIN=0
 
 # functions
 if [ -z "$IP_ADDRESS" ]
 then
 	echo "IP Address is missing."
-	echo "Example: nowtv.php 1.2.3.4 channel"
+	echo "Example: roku_nowtv_setup.php 1.2.3.4"
 	exit 0
 fi
 
-if [ -z "$CHANNEL" ]
-then
-	echo "Channel is missing."
-	echo "Example: nowtv.php 1.2.3.4 channel"
-	echo ""
-	echo "Available Channels: "
-	echo " - Entertainment Pass: comedy_central, discovery_channel, fox, gold, mtv, sky_arts, sky_atlantic, sky_one, sky_witness, syfy, wild"
-	echo " - Movies Pass: sky_cinema_premiere, sky_cinema_megahits, sky_cinema_greats, sky_cinema_disney, sky_cinema_family, sky_cinema_action, sky_cinema_comedy, sky_cinema_thriller, sky_cinema_drama, sky_cinema_scifi, sky_cinema_select"
-	echo " - Kids Pass: cartoon_network, boomerang, nickelodeon, nicktoons, nick_jr, cartoonito"
-	# exit " - Sports Pass: sky_sports_news, sky_sports_main_event, sky_sports_football, sky_sports_cricket, sky_sports_golf, sky_sports_f1, sky_sports_usa, sky_sports_arena, sky_sports_racing, sky_sports_mix"
-	exit 0
-fi
 
 
 # entertainment pass
@@ -126,19 +113,16 @@ fi
 if [ "$CHANNEL" = "sky_cinema_premiere" ]; then
 	channel_name='Sky Cinema Premiere'
 	contentID=1409
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_megahits" ]; then
 	channel_name='Sky Cinema Megahits'
 	contentID=1814
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_greats" ]; then
 	channel_name='Sky Cinema Greats'
 	contentID=1815
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_disney" ]; then
@@ -149,43 +133,36 @@ fi
 if [ "$CHANNEL" = "sky_cinema_family" ]; then
 	channel_name='Sky Cinema Family'
 	contentID=1808
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_action" ]; then
 	channel_name='Sky Cinema Action'
 	contentID=1001
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_comedy" ]; then
 	channel_name='Sky Cinema Comedy'
 	contentID=1002
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_thriller" ]; then
 	channel_name='Sky Cinema Thriller'
 	contentID=1818
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_drama" ]; then
 	channel_name='Sky Cinema Drama'
 	contentID=1816
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_scifi" ]; then
 	channel_name='Sky Cinema SciFi'
 	contentID=1807
-	PIN=1
 fi
 
 if [ "$CHANNEL" = "sky_cinema_select" ]; then
 	channel_name='Sky Cinema Select'
 	contentID=1811
-	PIN=1
 fi
 
 
@@ -198,18 +175,7 @@ fi
 
 # load the channel
 echo 'NowTV ('$IP_ADDRESS') Loading '$channel_name;
-curl -d '' http://$IP_ADDRESS:8060/launch/20242?contentID=$contentID;
+curl -d '' http://$IP_ADDRESS:8060/launch/26614?contentID=$contentID;
 # echo http://$IP_ADDRESS:8060/launch/26614?contentID=$contentID
 
-# handle PIN
-if [ "$PIN" = "1" ]; then
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 1
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 1
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 1
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 1
-fi
 echo Complete.;

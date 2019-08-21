@@ -1,0 +1,132 @@
+## NowTV Remote Commands
+
+
+# get installed apps
+wget -q -O - "http://192.168.1.180:8060/query/apps" | sed -e 's/<app id=\"//g' -e 's#<[^>]*>##g' -e 's/\".*>/ /g';
+
+
+# Watch Sky One LIVE
+curl -d '' http://192.168.19.112:8060/keypress/Home
+sleep 5
+curl -d '' http://192.168.19.112:8060/keypress/Down
+sleep 2
+curl -d '' http://192.168.19.112:8060/keypress/Down
+sleep 2
+curl -d '' http://192.168.19.112:8060/keypress/Right
+sleep 2
+curl -d '' http://192.168.19.112:8060/keypress/Down
+sleep 2
+curl -d '' http://192.168.19.112:8060/keypress/Select
+sleep 2
+
+
+# Launch NowTV App
+curl -d '' http://192.168.1.180:8060/launch/20242
+
+
+# Launch TV Guide
+curl -d '' http://192.168.1.180:8060/keypress/guide
+
+
+# Get active app
+curl http://192.168.1.180:8060/query/active-app
+wget -q -O - "http://192.168.1.180:8060/query/active-app" | sed -e 's/<app\"//g' -e 's#<[^>]*>##g' -e 's/\".*>/ /g';
+
+
+# load tv catchup
+curl -d '' http://192.168.1.180:8060/keypress/instantreplay
+
+
+# Get device info
+curl http://192.168.1.180:8060/query/device-info
+
+
+# findremote
+curl -d '' http://192.168.1.180:8060/launch/26614?contentID=20
+
+
+# Install MLB
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=14'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 10
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+# Remove MLB
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=14'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Down
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Up
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 5
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+# Remove NETFLIX
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=12'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Down
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Up
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 5
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+# Remove Box Plus
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=107958'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Down
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Up
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 5
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+# Remove YouTube
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=837'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Down
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Up
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 5
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+# Remove UKTV Play
+curl -d '' 'http://192.168.1.180:8060/launch/11?contentID=181173'
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Down
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Up
+sleep 1
+curl -d '' http://192.168.1.180:8060/keypress/Select
+sleep 5
+curl -d '' http://192.168.1.180:8060/keypress/Home
+sleep 2
+
+
+curl -d '' 'http://192.168.1.180:8060/launch/dev?streamformat=mp4&url=http%3A%2F%2Fvideo.ted.com%2Ftalks%2Fpodcast%2FVilayanurRamachandran_2007_480.mp4'
