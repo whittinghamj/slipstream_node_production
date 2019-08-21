@@ -203,6 +203,8 @@ curl -d '' http://$IP_ADDRESS:8060/launch/20242?contentID=$contentID;
 
 # handle PIN
 if [ "$PIN" = "1" ]; then
+	sleep 10
+	
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
 	sleep 1
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
