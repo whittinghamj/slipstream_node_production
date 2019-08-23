@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Name: NowTV Setup Script
-# Author: GTV
-# Created: 03 Feb 2019
+# Name: Roku Admin Script
+# Author: delta1372
+# Updated: 21 Aug 2019
 # Version 1.0
 
 IP_ADDRESS=$1
@@ -13,7 +13,7 @@ if [ -z "$IP_ADDRESS" ]
 then
 	echo ""
 	echo "IP Address is missing."
-    echo "Example: php roku.php 1.2.3.4 setup|update|reboot"
+    echo "Example: php roku_admin.sh 1.2.3.4 setup|update|reboot|remove_channels|install_channels"
     echo ""
     exit 0
 fi
@@ -22,7 +22,7 @@ if [ -z "$COMMAND" ]
 then
 	echo ""
 	echo "Command is missing."
-    echo "Example: php roku.php 1.2.3.4 setup|update|reboot"
+    echo "Example: php roku_admin.sh 1.2.3.4 setup|update|reboot|remove_channels|install_channels"
 	echo ""
 	exit 0
 fi
@@ -74,7 +74,7 @@ channel_install() {
 }
 
 if [ "$COMMAND" = "setup" ]; then
-	echo NowTV @ $IP_ADDRESS is being configured for IPTV use.
+	echo Roku @ $IP_ADDRESS is being configured for IPTV use.
 	
 	echo ""
 	echo Disabling the screensaver.
@@ -91,6 +91,12 @@ if [ "$COMMAND" = "setup" ]; then
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Down
 	sleep 1
 
+	curl -d '' http://$IP_ADDRESS:8060/keypress/Down
+	sleep 1
+
+	curl -d '' http://$IP_ADDRESS:8060/keypress/Down
+	sleep 1
+
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
 	sleep 1
 
@@ -103,54 +109,18 @@ if [ "$COMMAND" = "setup" ]; then
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
 	sleep 1
 
-	echo Disabling power save mode.
-	
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Back
-	sleep 1
+	# echo Disabling power save mode.
 
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Back
-	sleep 1
+	# echo Installing MLB.tv.
 
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
-	sleep 1
+	# curl -d '' http://$IP_ADDRESS:8060/launch/11?contentID=14
+	# sleep 1
 
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
-	sleep 1
+	# curl -d '' http://$IP_ADDRESS:8060/keypress/Select
+	# sleep 10
 
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Right
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Right
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Right
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Home
-	sleep 1
-
-	echo Installing MLB.tv.
-
-	curl -d '' http://$IP_ADDRESS:8060/launch/11?contentID=14
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
-	sleep 10
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Home
-	sleep 2
+	# curl -d '' http://$IP_ADDRESS:8060/keypress/Home
+	# sleep 2
 
 	echo Removing NETFLIX.
 
@@ -231,7 +201,7 @@ fi
 
 if [ "$COMMAND" = "reboot" ]; then	
 	echo ""
-	echo Rebooting NowTV.
+	echo Rebooting Roku.
 
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Home
 	sleep 5
@@ -257,10 +227,7 @@ if [ "$COMMAND" = "reboot" ]; then
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
 	sleep 1
 
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Right
-	sleep 1
-
-	curl -d '' http://$IP_ADDRESS:8060/keypress/Down
+	curl -d '' http://$IP_ADDRESS:8060/keypress/Up
 	sleep 1
 
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Right
@@ -278,7 +245,7 @@ fi
 
 if [ "$COMMAND" = "update" ]; then	
 	echo ""
-	echo Checking NowTV for core updates.
+	echo Checking Roku for core updates.
 
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Home
 	sleep 5
@@ -324,7 +291,7 @@ if [ "$COMMAND" = "update" ]; then
 fi
 
 if [ "$COMMAND" = "remove_channels" ]; then
-	echo NowTV @ $IP_ADDRESS is removing all channels / apps.
+	echo Roku @ $IP_ADDRESS is removing all channels / apps.
 	
 	echo ""
 	
@@ -348,7 +315,7 @@ if [ "$COMMAND" = "remove_channels" ]; then
 fi
 
 if [ "$COMMAND" = "install_channels" ]; then
-	echo NowTV @ $IP_ADDRESS is installing all channels / apps.
+	echo Roku @ $IP_ADDRESS is installing IPTV channels / apps.
 	
 	echo ""
 	

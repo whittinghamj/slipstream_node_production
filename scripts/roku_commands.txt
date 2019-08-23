@@ -6,7 +6,7 @@ wget -q -O - "http://192.168.1.180:8060/query/apps" | sed -e 's/<app id=\"//g' -
 
 
 # Watch Sky One LIVE
-curl -d '' http://192.168.19.112:8060/keypress/Home
+curl -d '' http://192.168.19.198:8060/keypress/Home
 sleep 5
 curl -d '' http://192.168.19.112:8060/keypress/Down
 sleep 2
@@ -39,6 +39,19 @@ curl -d '' http://192.168.1.180:8060/keypress/instantreplay
 
 # Get device info
 curl http://192.168.1.180:8060/query/device-info
+
+
+# Secret Wifi Info
+curl -d '' http://192.168.1.180:8060/keypress/Home
+curl -d '' http://192.168.1.180:8060/keypress/Home
+curl -d '' http://192.168.1.180:8060/keypress/Home
+curl -d '' http://192.168.1.180:8060/keypress/Home
+curl -d '' http://192.168.1.180:8060/keypress/Home
+curl -d '' http://192.168.1.180:8060/keypress/Up
+curl -d '' http://192.168.1.180:8060/keypress/Down
+curl -d '' http://192.168.1.180:8060/keypress/Up
+curl -d '' http://192.168.1.180:8060/keypress/Down
+curl -d '' http://192.168.1.180:8060/keypress/Up
 
 
 # findremote

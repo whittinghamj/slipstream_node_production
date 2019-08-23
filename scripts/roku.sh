@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Name: Roku Management Script
+# Name: Roku NowTV Management Script
 # Author: delta1372
 # Created: 21 Aug 2019
 # Version 1.0
@@ -28,7 +28,7 @@ then
 	echo " - Entertainment Pass: comedy_central, discovery_channel, fox, gold, mtv, sky_arts, sky_atlantic, sky_one, sky_witness, syfy, wild"
 	echo " - Movies Pass: sky_cinema_premiere, sky_cinema_megahits, sky_cinema_greats, sky_cinema_disney, sky_cinema_family, sky_cinema_action, sky_cinema_comedy, sky_cinema_thriller, sky_cinema_drama, sky_cinema_scifi, sky_cinema_select"
 	echo " - Kids Pass: cartoon_network, boomerang, nickelodeon, nicktoons, nick_jr, cartoonito"
-	# exit " - Sports Pass: sky_sports_news, sky_sports_main_event, sky_sports_football, sky_sports_cricket, sky_sports_golf, sky_sports_f1, sky_sports_usa, sky_sports_arena, sky_sports_racing, sky_sports_mix"
+	echo " - Sports Pass: sky_sports_news, sky_sports_main_event, sky_sports_football, sky_sports_cricket, sky_sports_golf, sky_sports_f1, sky_sports_action, sky_sports_arena, sky_sports_racing, sky_sports_mix sky_sports_premier_league"
 	exit 0
 fi
 
@@ -192,9 +192,58 @@ fi
 # sports pass
 if [ "$CHANNEL" = "sky_sports_news" ]; then
 	channel_name='Sky Sports News'
-	contentID=1811
+	contentID=1314
 fi
 
+if [ "$CHANNEL" = "sky_sports_main_event" ]; then
+	channel_name='Sky Sports Main Event'
+	contentID=1301
+fi
+
+if [ "$CHANNEL" = "sky_sports_cricket" ]; then
+	channel_name='Sky Sports Cricket'
+	contentID=1302
+fi
+
+if [ "$CHANNEL" = "sky_sports_football" ]; then
+	channel_name='Sky Sports Football'
+	contentID=3838
+fi
+
+if [ "$CHANNEL" = "sky_sports_golf" ]; then
+	channel_name='Sky Sports Golf'
+	contentID=1322
+fi
+
+if [ "$CHANNEL" = "sky_sports_f1" ]; then
+	channel_name='Sky Sports F1'
+	contentID=1306
+fi
+
+if [ "$CHANNEL" = "sky_sports_action" ]; then
+	channel_name='Sky Sports Action'
+	contentID=1333
+fi
+
+if [ "$CHANNEL" = "sky_sports_arena" ]; then
+	channel_name='Sky Sports Arena'
+	contentID=3839
+fi
+
+if [ "$CHANNEL" = "sky_sports_racing" ]; then
+	channel_name='Sky Sports Racing'
+	contentID=1354
+fi
+
+if [ "$CHANNEL" = "sky_sports_mix" ]; then
+	channel_name='Sky Sports Mix'
+	contentID=4091
+fi
+
+if [ "$CHANNEL" = "sky_sports_premier_league" ]; then
+	channel_name='Sky Sports Premier League'
+	contentID=1303
+fi
 
 # load the channel
 echo 'NowTV ('$IP_ADDRESS') Loading '$channel_name;
@@ -203,8 +252,8 @@ curl -d '' http://$IP_ADDRESS:8060/launch/20242?contentID=$contentID;
 
 # handle PIN
 if [ "$PIN" = "1" ]; then
-	sleep 10
-	
+	sleep 6
+
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
 	sleep 1
 	curl -d '' http://$IP_ADDRESS:8060/keypress/Select
