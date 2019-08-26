@@ -4,3 +4,6 @@
 
 # SlipstreamIPTV Cloud Panel - Crons
 * * * * * php -q /root/slipstream/node/console/console.php cron >> /root/slipstream/node/logs/cron.log
+
+# Slipstream HE Cluster - Roku Channel Manager
+0 */4 * * * php -q /root/slipstream/node/console/console.php roku_channel_manager >> /root/slipstream/node/logs/cron.log
