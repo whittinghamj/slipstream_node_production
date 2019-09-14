@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# example: ffmpeg -c:v h264_mmal -i http://a.files.bbci.co.uk/media/live/manifesto/audio_video/simulcast/hls/uk/abr_tv/ak/bbc_parliament.m3u8 -c:v h264_omx -c:a copy -b:v 1500k output.mp4
+
 echo "Installing FFMPEG with GPU support for Raspberry Pi"
 
 cd /root
