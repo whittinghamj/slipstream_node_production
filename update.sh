@@ -55,6 +55,9 @@ cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/channels
 
 cp -R /root/slipstream/node/www/speedtest /var/www/html
 
+cp -R /root/slipstream/node/www/c /var/www/html
+cp /root/slipstream/node/www/portal.php /var/www/html/
+
 # set permissions to everyone for php files
 chmod 777 /var/www/html/*.php
 
