@@ -94,8 +94,10 @@ else
 	echo "Updating NGINX and restarting."
 	cp $file1 $file2
 	service nginx restart
-
 fi
+
+# ffmpeg fix
+command -v ffmpeg >/dev/null 2>&1 || { sudo apt update -y; sudo apt-get install ffmpeg -y; }
 
 # restart php-fpm
 # systemctl restart php7.2-fpm.service
