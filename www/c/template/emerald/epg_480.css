@@ -22,12 +22,6 @@
     width: 632px;
 }
 
-#epg .number_block{
-    background-image: url("i_480/mb_icons.png");
-    background-position: -92px 0;
-    width: 34px;
-}
-
 #epg .name_block, #epg .active_name_block{
     font-size: 17px;
     width: 128px;
@@ -58,10 +52,12 @@
 
 #epg .blue_row_bg[active="active"] .number_block{
     width: 34px;
-    height: 18px;
-    background-position: -92px -22px;
+    height: 20px;
+    background-image: none;
+    background-color: #fff;
     border-radius: 2px;
     color: #0a5104;
+    margin-top: 2px;
 }
 
 #epg .active_epg_container_block, #epg .blue_row_bg[active="active"] .epg_container_block{
@@ -197,7 +193,7 @@
 
 #epg .program_info .time{
     color: #bcf092;
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
 }
 
 #epg .on_date{

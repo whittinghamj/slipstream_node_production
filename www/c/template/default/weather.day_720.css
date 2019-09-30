@@ -67,7 +67,8 @@
     color: #0042FF;
     font-size: 52px;
     text-shadow: 1px 1px 4px #ccc;
-    font-family: "Myriad Pro Cond Bold", sans-serif;
+    font-family: "Myriad Pro Cond", sans-serif;
+    font-weight: bold;
 }
 
 .weather_forecast .day_weather_text, .day_weather_descr{

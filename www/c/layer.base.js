@@ -11,24 +11,27 @@ function BaseLayer(){
 
     this.header_path_map = [];
 
-    this.use_visibility = true;
-
+    /*this.dom_obj = this.create_block();
+    document.body.appendChild(this.dom_obj);*/
     this.dom_obj = {};
+    
+    /*this.color_buttons = [
+        {"color" : "red"},
+        {"color" : "green"},
+        {"color" : "yellow"},
+        {"color" : "blue"}
+    ];*/
 
-    if (['MAG245', 'MAG245D', 'MAG250', 'AuraHD0', 'AuraHD1', 'AuraHD9'].indexOf(stb.type) != -1){
-        this.use_visibility = false;
-    }
+    //this.color_buttons_map = {};
+    //this.buttons = {};
+
+    //this.color_buttons.parent = this;
 }
 
 BaseLayer.prototype.show = function(){
     _debug('BaseLayer.show');
-
-    if (this.use_visibility){
-        this.dom_obj.style.visibility = 'visible';
-    }else{
-        this.dom_obj.show();
-    }
-
+    
+    this.dom_obj.show();
     this.on = true;
     
     stb.set_cur_place(this.layer_name);
@@ -37,13 +40,9 @@ BaseLayer.prototype.show = function(){
 
 BaseLayer.prototype.hide = function(){
     _debug('BaseLayer.hide');
-
-    if (this.use_visibility){
-        this.dom_obj.style.visibility = 'hidden';
-    }else{
-        this.dom_obj.hide();
-    }
-
+    
+    this.dom_obj.hide();
+    
     this.on = false;
 };
 

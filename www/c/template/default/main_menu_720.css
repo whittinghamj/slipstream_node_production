@@ -17,13 +17,14 @@
 }
 
 .main_menu_date{
-    font-family: "Myriad Pro", serif;
+    font-family: "Trebuchet ms", serif;
+    font-weight: bold;
     font-size: 22px;
     color: #99a8b5;
 }
 
 .main_menu_time{
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
     font-size: 34px;
     color: #ccd6de;
     margin-left: 12px;
@@ -34,8 +35,7 @@
     position: absolute;
     width: 584px;
     top: 38px;
-    right: 70px;
-    text-align: right;
+    right: 0;
     font-family: "Myriad Pro Cond", serif;
 }
 

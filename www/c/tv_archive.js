@@ -13,53 +13,47 @@
 
             this.get_item().cmd  = 'auto /media/' + this.get_item().id + '.mpg';
 
-            if (!this.get_item().hasOwnProperty('o_name')){
-                this.get_item().o_name = this.get_item().name;
-            }
-
-            this.get_item().name = this.get_channel_name() + ' — ' + this.get_item().o_name;
-
-            var self = this;
-
-            stb.player.on_create_link = function(result){
-                _debug('epg_simple.play_from_archive.on_create_link', result);
-
-                if (result.error == 'limit'){
-                    stb.notice.show(word['player_limit_notice']);
-                }else if(result.error == 'nothing_to_play'){
-                    stb.notice.show(word['player_file_missing']);
-                }else if(result.error == 'link_fault'){
-                    stb.notice.show(word['player_server_error']);
-                }else{
-
-                    if (!download){
-
-                        self.parent.hide(true);
-
-                        stb.player.prev_layer = self.parent;
-                        stb.player.need_show_info = 1;
-                        module.tv_archive.cur_url = result.cmd;
-                        _debug('self.cur_url', self.cur_url);
-                        _debug('module.tv_archive.cur_url', module.tv_archive.cur_url);
-                        stb.player.cur_media_item.cmd = result.cmd;
-                        stb.player.play_now(result.cmd);
-                    }else{
-                        var url = /(http:\/\/[^\s]*)/.exec(result.download_cmd)[1];
-                        //self.add_download.call(self, url, result.to_file);
-
-                        download_callback && download_callback(url, result.to_file);
-                        stb.player.on = false;
-                    }
+                if (!this.get_item().hasOwnProperty('o_name')){
+                    this.get_item().o_name = this.get_item().name;
                 }
-            };
 
-            var item = this.get_item().clone();
+                this.get_item().name = this.get_channel_name() + ' — ' + this.get_item().o_name;
 
-            if (download){
-                item.download = true;
-            }
+                var self = this;
 
-            stb.player.play(item);
+                stb.player.on_create_link = function(result){
+                    _debug('epg_simple.play_from_archive.on_create_link', result);
+
+                    if (result.error == 'limit'){
+                        stb.notice.show(word['player_limit_notice']);
+                    }else if(result.error == 'nothing_to_play'){
+                        stb.notice.show(word['player_file_missing']);
+                    }else if(result.error == 'link_fault'){
+                        stb.notice.show(word['player_server_error']);
+                    }else{
+
+                        if (!download){
+
+                            self.parent.hide(true);
+
+                            stb.player.prev_layer = self.parent;
+                            stb.player.need_show_info = 1;
+                            module.tv_archive.cur_url = result.cmd;
+                            _debug('self.cur_url', self.cur_url);
+                            _debug('module.tv_archive.cur_url', module.tv_archive.cur_url);
+                            stb.player.cur_media_item.cmd = result.cmd;
+                            stb.player.play_now(result.cmd);
+                        }else{
+                            var url = /(http:\/\/[^\s]*)/.exec(result.download_cmd)[1];
+                            //self.add_download.call(self, url, result.to_file);
+
+                            download_callback && download_callback(url, result.to_file);
+                            stb.player.on = false;
+                        }
+                    }
+                };
+
+                stb.player.play(this.get_item());
         },
 
         get_part_by_pos : function(new_pos){

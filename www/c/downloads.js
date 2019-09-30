@@ -155,7 +155,8 @@
                 return;
             }
 
-            stbDownloadManager.AddJob(download.url, this.get_full_file_path(download));
+            this._queue.push(download);
+            this.save_queue();
 
             window.clearInterval(this.interval);
             this.every_interval();
@@ -459,6 +460,50 @@
                             self._queue[idx].state = 5;
                         }
                     });
+
+                    /*if (typeof(url) == 'object'){
+
+                        _debug('url', url);
+
+                        var exec = eval(url.exec);
+
+                        if (typeof(exec) == 'function'){
+                            _debug('url.options', url.options);
+                            url.options[2] = function(cmd){
+
+                                _debug('downloads.on_create_link', cmd);
+
+                                if (!cmd){
+                                    if (idx !== null){
+                                        self._queue[idx].state = 5;
+                                    }
+                                    return;
+                                }
+
+                                var new_extension = cmd.substr(cmd.lastIndexOf('.')+1);
+
+                                download.filePath = download.filePath.slice(0, download.filePath.lastIndexOf('.')+1) + new_extension;
+
+                                _debug('idx', idx);
+                                _debug('self._queue', self._queue);
+                                _debug('self._queue.length', self._queue.length);
+                                _debug('self._queue[idx]', self._queue[idx]);
+
+                                self._queue[idx].filePath = download.filePath;
+
+                                _debug('stbDownloadManager.AddJob', cmd, download.filePath);
+
+                                stbDownloadManager.AddJob(cmd, download.filePath);
+                            };
+
+                            exec.apply(null, url.options);
+                        }
+
+                    }else{
+                        stbDownloadManager.AddJob(url, download.filePath);
+                    }*/
+
+                    //this._queue.splice(idx, 1);
                 }
             }
 

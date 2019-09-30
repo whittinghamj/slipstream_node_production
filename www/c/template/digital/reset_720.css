@@ -1,15 +1,15 @@
 @font-face {
-    font-family: "Myriad Pro";
-    src: url("fonts/MyriadPro-Regular.ttf");
+    font-family: "Roboto";
+    src: url("fonts/Roboto-Regular.ttf");
     font-style: normal;
     font-weight: normal;
 }
 
 /*@font-face {
-    font-family: "Myriad Pro";
-    src: url("fonts/MyriadPro-Bold.ttf");
+    font-family: "Roboto";
+    src: url("fonts/Roboto-Bold.ttf");
     font-style: normal;
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
 }*/
 
 * {
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Roboto", sans-serif;
     width: 100%;
     height: 100%;
     overflow: hidden;

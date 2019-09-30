@@ -17,14 +17,15 @@
 }
 
 .main_menu_date{
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
     font-size: 15px;
     text-shadow: rgba(0, 50, 80, 0.5) 1px 2px 0;
     color: #fff;
 }
 
 .main_menu_time{
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
     font-size: 21px;
     margin-left: 8px;
     /*margin-right: 65px;*/
@@ -36,9 +37,10 @@
     position: absolute;
     width: 400px;
     top: 38px;
-    right: 19px;
-    font-family: "Myriad Pro", sans-serif;
+    right: 0;
+    font-family: "Roboto", sans-serif;
     text-align: right;
+    padding-right: 19px;
 }
 
 .mm_menu_hor{
@@ -71,7 +73,7 @@
     float: left;
     width: 220px;
     height: 162px;
-    font: 18px "Myriad Pro";
+    font: 18px "Roboto";
     color: #fff;
     text-transform: uppercase;
     text-align: center;
@@ -83,12 +85,13 @@
     float: left;
     width: 220px;
     height: 162px;
-    font: 20px "Myriad Pro Bold";
+    font: 20px "Roboto";
     color: #fff;
     text-shadow: rgba(0, 50, 80, 0.5) 1px 2px 0;
     text-transform: uppercase;
     text-align: center;
     background: url(i/mm_hor_bg1.png) no-repeat;
+    font-weight: bold;
     line-height: 38px;
 }
 
@@ -129,7 +132,7 @@
 .mm_menu_vert_body .mm_vert_container div{
     height: 34px;
     width: 241px;
-    font: 20px "Myriad Pro";
+    font: 20px "Roboto";
     color: #ffffff;
     text-transform: uppercase;
     text-shadow: rgba(0, 50, 80, 0.5) 1px 2px 0;
@@ -145,8 +148,7 @@
     color: #002864;
     text-shadow: #c79b00 1px 2px 0;
     background: url(i/mm_vert_cell.png) top left;
-    font-family: "Myriad Pro Bold";
-    padding-top: 8px;
+    font-weight: bold;
 }
 
 .main_menu_ver

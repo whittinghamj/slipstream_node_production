@@ -19,7 +19,7 @@ ul.items_container_passive, ul.items_container_active{
 ul.items_container_passive li, ul.items_container_active li{
     height: 26px;
     font-size: 20px;
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
     color: #18391A;
     white-space: pre;
     margin-top: 2px;

@@ -66,7 +66,7 @@
     margin-top: 7px;
     overflow: hidden;
     white-space: pre;
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
 }
 
 /*#records .active_row_bg[rel="close"] .active_ch_name_block{

@@ -45,7 +45,6 @@
             }
 
             if (!stb.profile.ts_path){
-                _debug('path is empty');
                 return;
             }
 

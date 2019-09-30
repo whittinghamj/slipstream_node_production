@@ -10,9 +10,19 @@ var main_menu = {
     show : function(){
         _debug('main_menu.show');
         this.dom_obj.show();
-
-        this.set_focused_module();
-
+        _debug('focus_module - ', focus_module);
+        if (focus_module) {
+            this.sub_menu_hide();
+            var mapLength = this.map.length;
+            stb.player.stop();
+            while(this.map[1].module.layer_name != focus_module && mapLength != 0) {
+                this.map.push(this.map.shift());
+                if (mapLength) {
+                    mapLength--;
+                }
+            }
+            focus_module = '';
+        }
         this.on = true;
         this.render();
         stb.set_cur_place('main_menu');
@@ -31,31 +41,6 @@ var main_menu = {
         this.on = false;
 
         this.triggerCustomEventListener('mainmenuhide');
-    },
-
-    set_focused_module : function(){
-        _debug('main_menu.set_focused_module');
-
-        _debug('focus_module - ', focus_module);
-        if (focus_module) {
-            this.sub_menu_hide();
-            var mapLength = this.map.length;
-            stb.player.stop();
-            while(this.map[1] && this.map[1].module.layer_name != focus_module && mapLength != 0) {
-                this.map.push(this.map.shift());
-                if (mapLength) {
-                    mapLength--;
-                }
-            }
-
-            if(!stb.supermodule){
-                focus_module = ''
-            }
-
-            if (this.on){
-                this.render();
-            }
-        }
     },
     
     init : function(){
@@ -82,10 +67,6 @@ var main_menu = {
             _debug('stb.player.channels', stb.player.channels);
             if (stb.player.channels && stb.player.channels.length>0 && module.tv){
                 this.hide();
-                if (module && module.tv){
-                    stb.set_cur_place(module.tv.layer_name);
-                    stb.set_cur_layer(module.tv);
-                }
                 stb.player.play_last();
             }
         }).bind(key.EXIT, this);
@@ -225,35 +206,11 @@ var main_menu = {
         this.clear_menu();
         
         var sub_menu_item;
-
-        var idx_map = [];
-        var sorted_map = [];
-
-        for(i=0; i<this.map.length; i++){
-            idx_map[idx_map.length] = this.map[i].idx;
-        }
-
-        idx_map.sort();
-
-        _debug('idx_map', idx_map);
-
-        for(i=0; i<this.map.length; i++){
-            var new_idx = idx_map.indexOf(this.map[i].idx);
-            sorted_map[new_idx] = this.map[i];
-        }
-
-        this.map = sorted_map;
-
-        this.set_focused_module();
         
         for(var i=0; i<this.map.length; i++){
             
             if (i<3){
-
-                var img = new Image();
-                img.src = this.map[i].img;
-                this.cells[i].img_dom_obj.appendChild(img);
-
+                this.cells[i].img_dom_obj.style.background = 'url('+this.map[i].img+')';
                 this.cells[i].title_dom_obj.innerHTML = this.map[i].title;
             }
             
@@ -282,14 +239,13 @@ var main_menu = {
             
             if (i != 1){
                 this.map[i].sub_obj.hide();
-            }else if (i == 1){
+                
                 if (this.map[i].sub.length > 0){
                     this.sub_menu_show();
                 }else{
                     this.sub_menu_hide();
                 }
             }
-
         }
         
         if(this.map[1]){
@@ -303,16 +259,7 @@ var main_menu = {
         _debug('main_menu.render');
         
         for (var i=0; i<=2; i++){
-
-            var img = new Image();
-            img.src = this.map[i].img;
-            img.onerror = function(){
-                this.src = 'template/' + loader.template + '/i' + resolution_prefix + '/' + 'mm_ico_default.png';
-            };
-
-            this.cells[i].img_dom_obj.innerHTML = '';
-            this.cells[i].img_dom_obj.appendChild(img);
-
+            this.cells[i].img_dom_obj.style.background = 'url('+this.map[i].img+')';
             this.cells[i].title_dom_obj.innerHTML = this.map[i].title;
         }
         
@@ -428,46 +375,19 @@ var main_menu = {
             stb.notice.show(get_word('msg_service_off'));
             return;
         }
-
-        var self = this;
-
+        
         if (this.map[1].sub && this.map[1].sub[this.active_sub] && typeof(this.map[1].sub[this.active_sub].cmd) == 'object'){
             
             var context = this.map[1].sub[this.active_sub].cmd.context || window;
-
-            stb.advert.start(
-                function () {
-                    self.map[1].sub[self.active_sub].cmd.func.apply(context, self.map[1].sub[self.active_sub].cmd.args);
-                }
-            )
-
+            
+            this.map[1].sub[this.active_sub].cmd.func.apply(context, this.map[1].sub[this.active_sub].cmd.args);
+            
         }else if (this.map[1].sub && this.map[1].sub[this.active_sub] && typeof(this.map[1].sub[this.active_sub].cmd) == 'function'){
-
-            stb.advert.start(
-                function () {
-                    self.map[1].sub[self.active_sub].cmd()
-                }
-            );
-
+            this.map[1].sub[this.active_sub].cmd();
         }else if (this.map[1].sub && this.map[1].sub[this.active_sub] && typeof(this.map[1].sub[this.active_sub].cmd) == 'string'){
-
-            stb.advert.start(
-                function () {
-                    eval(self.map[1].sub[self.active_sub].cmd);
-                }
-            );
-
+            eval(this.map[1].sub[this.active_sub].cmd);
         }else{
-
-            if (self.map[1] && self.map[1].module && self.map[1].module.layer_name && self.map[1].module.layer_name == 'settings'){
-                self.map[1].cmd();
-            }else{
-                stb.advert.start(
-                    function () {
-                        self.map[1].cmd();
-                    }
-                );
-            }
+            this.map[1].cmd();
         }
     },
     
@@ -476,7 +396,7 @@ var main_menu = {
         
         try{
             for (var i=0; i<=2; i++){
-                this.cells[i].img_dom_obj.innerHTML = '';
+                this.cells[i].img_dom_obj.style.background = '';
                 this.cells[i].title_dom_obj.innerHTML = '';
             }
             
@@ -493,57 +413,28 @@ var main_menu = {
     },
     
     add : function(title, sub, img, cmd, module){
-
-        if (single_module.length){
-            return;
-        }
-
         cmd = cmd || '';
         sub = sub || [];
         
         img = img || '';
-
-        var resolution = resolution_prefix.replace('_', '');
-        resolution = resolution || 576;
-
-        img = img.replace('{0}', resolution);
-
-        _debug('img', img);
-
+        
         if (sub.length > 0){
             for (var k=1; k<3; k++){
                 sub.unshift(sub.pop());
             }
         }
 
-        _debug('module.layer_name', module.layer_name);
-
-        var idx = stb.all_modules.indexOf(module.layer_name);
-
-        _debug('idx', idx);
-
-        if (idx === undefined || idx === -1){
-            idx = this.map.length;
-        }
-
-        _debug('idx 2', idx);
-
         this.map.push(
             {
-                "title": title,
-                "img": img.indexOf('http') == 0 ? img : 'template/' + loader.template + '/i' + resolution_prefix + '/' + img,
-                "cmd": cmd,
-                "sub": sub,
-                "module": module,
-                "idx" : idx
+                "title"    : title,
+                "img"      : 'template/' + loader.template + '/i' + resolution_prefix + '/' + img,
+                "cmd"      : cmd,
+                "sub"      : sub,
+                "module"   : module
             }
         );
-
-        _debug('stb.loader.on', stb.loader.on);
-
-        if (!stb.loader.on){
-            this.build();
-        }
+        
+        this.build();
     }
 };
 

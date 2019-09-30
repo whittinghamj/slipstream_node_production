@@ -50,9 +50,6 @@
 
 #epg .number_block{
     margin-top: 5px;
-    background-image: url("i/mb_icons.png");
-    background-position: -92px 0;
-    width: 34px;
 }
 
 #epg .active_number_block, #epg .blue_row_bg[active="active"] .number_block{
@@ -62,6 +59,7 @@
 #epg .blue_row_bg[active="active"] .number_block{
     width: 34px;
     height: 27px;
+    background-image: url("i/mb_icons.png");
     background-position: -92px -21px;
     color: #202020;
     padding-top: 4px;
@@ -209,7 +207,7 @@
 
 #epg .program_info .time{
     color: #ffc528;
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
 }
 
 #epg .on_date{

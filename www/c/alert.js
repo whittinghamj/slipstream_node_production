@@ -131,13 +131,6 @@ _alert.prototype.queue_handler = function(){
             this.show(msg);
         }else if (typeof(msg) == 'object'){
             
-            if (msg.hasOwnProperty('valid_until') && msg.valid_until && msg.valid_until < (new Date().getTime())/1000){
-                _debug('remove expired message from the queue');
-                this.queue.splice(0, 1);
-                this.queue_handler();
-                return;
-            }
-
             if (msg.hasOwnProperty('confirm_callback')){
                 this.set_confirm_callback(msg.confirm_callback);
             }

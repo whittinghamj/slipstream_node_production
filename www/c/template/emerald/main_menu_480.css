@@ -17,13 +17,14 @@
 }
 
 .main_menu_date{
-    font-family: "Myriad Pro",  sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
     font-size: 15px;
     color: #bcf092;
 }
 
 .main_menu_time{
-    font-family: "Myriad Pro Bold";
+    font-weight: bold;
     font-size: 21px;
     color: #bcf092;
     margin-left: 8px;
@@ -34,9 +35,10 @@
     position: absolute;
     width: 400px;
     top: 28px;
-    right: 25px;
-    font-family: "Myriad Pro",  sans-serif;
+    right: 0;
+    font-family: "Roboto", sans-serif;
     text-align: right;
+    padding-right: 65px;
 }
 
 .mm_menu_hor{
@@ -69,7 +71,7 @@
     float: left;
     width: 220px;
     height: 138px;
-    font: 18px "Myriad Pro";
+    font: 18px "Roboto";
     color: #fff;
     text-transform: uppercase;
     text-align: center;
@@ -80,7 +82,7 @@
     float: left;
     width: 220px;
     height: 138px;
-    font: 20px "Myriad Pro";
+    font: 20px "Roboto";
     color: #fff;
     text-transform: uppercase;
     text-align: center;
@@ -124,7 +126,7 @@
 .mm_menu_vert_body .mm_vert_container div{
     height: 25px;
     width: 238px;
-    font: 18px "Myriad Pro";
+    font: 18px "Roboto";
     color: #ffffff;
     text-transform: uppercase;
     background: url(i_480/mm_vert_cell.png) bottom left;
@@ -138,9 +140,7 @@
 .mm_menu_vert_body .mm_vert_container .active{
     color: #0a5104;
     background: url(i_480/mm_vert_cell.png) top left;
-    font-family: "Myriad Pro Bold";
-    padding-top: 6px;
-
+    font-weight: bold;
 }
 
 .main_menu_ver

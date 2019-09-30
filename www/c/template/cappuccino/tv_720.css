@@ -36,7 +36,6 @@
     font-size: 26px;
     /*text-shadow: #122946 0 -1px 0;*/
     /*margin: 4px 0 0 3px;*/
-    margin-top: 2px;
     padding-left: 3px;
     white-space: pre;
     overflow: hidden;
@@ -45,16 +44,11 @@
     /*width: 209px;*/
 }
 
-#tv .wide_container .name_block {
-    width: auto;
-    margin-right: 655px;
-}
-
 #tv .active_name_block{
     /*font-size: 22px;
     color: #002864;
     text-shadow: #fff 0 1px 0;*/
-    margin: 0px 15px 0 0;
+    margin: 0 15px 0 0;
     /*white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
