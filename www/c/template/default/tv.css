@@ -33,9 +33,10 @@
 }
 
 #tv .name_block{
+    color: #fff;
     font-size: 20px;
-    /*text-shadow: #122946 0 -1px 0;
-    margin: 3px 0 0 3px;*/
+    text-shadow: #122946 0 -1px 0;
+    margin: 3px 0 0 3px;
     padding-left: 3px;
     white-space: pre;
     overflow: hidden;
@@ -45,24 +46,20 @@
 }
 
 #tv .active_name_block{
-    /*font-size: 22px;
+    font-size: 22px;
     color: #002864;
-    text-shadow: #fff 0 1px 0;*/
-    /*margin-top: 8px;
-    margin-right: 25px;*/
-    margin: 0 15px 0 0;
-    /*white-space: pre;
+    text-shadow: #fff 0 1px 0;
+    margin: 2px 25px 0 0;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    float: left;
-    width: 290px;
-    height: 26px;*/
+    height: 26px;
     padding-left: 3px;
 }
 
 #tv .short_container .active_name_block{
     width: auto;
-    margin-top: 7px;
+    margin: 12px 15px 0 0;
     float: none;
 }
 
@@ -83,7 +80,7 @@
     font-size: 20px;
     text-shadow: #122946 0 -1px 0;*/
     font-size: 17px;
-    color: #919191;
+    color: #bbc4d2;
     margin: 0px 0 0 3px;
     padding-left: 5px;
     padding-top: 5px;
@@ -114,8 +111,8 @@
     /*font-size: 22px;
     color: #002864;
     text-shadow: #fff 0 1px 0;*/
-    font-size: 16px;
-    color: #000;
+    font-size: 18px;
+    color: #284b82;
     /*margin-top: 8px;
     margin-right: 25px;*/
     white-space: pre;
@@ -123,7 +120,7 @@
     width: 469px;
     float: left;
     text-overflow: ellipsis;
-    margin: -8px 0 0 3px;
+    margin: -5px 0 0 0;
 }
 
 .tv_timetable{
@@ -133,7 +130,7 @@
     left: 341px;
     padding: 5px 0 0;
     font-size: 18px;
-    color: #ffc528;
+    color: #99a8b5;
     overflow: hidden;
     height: 150px;
 }
@@ -162,7 +159,7 @@
 }
 
 .tv_timetable .time{
-    color: #ffc528;
+    color: #cfeafe;
     font-family: "Myriad Pro Cond";
 }
 
@@ -194,7 +191,7 @@
     right: 50px;
     width: 100px;
     font-size: 20px;
-    color: #ffc528;
+    color: #99A8B5;
     font-family: "Myriad Pro Cond";
     text-align:right;
 }

@@ -416,7 +416,11 @@
         this._show = function(category){
             _debug('audioclub._show', category);
 
-            this.category = category = category || this.categories[0];
+            this.category = category = category || this.categories && this.categories[0];
+
+            if (!this.category){
+                this.category = category = {"alias" : "albums", "title" : get_word("audioclub_albums")};
+            }
 
             this.load_params['category'] = category.alias;
 
@@ -465,6 +469,11 @@
             this.action.bind(key.OK, this);
 
             (function(){
+
+                if (single_module.indexOf(this.layer_name) != -1){
+                    return;
+                }
+
                 this.hide();
                 main_menu.show();
             }).bind(key.MENU, this);
@@ -482,6 +491,8 @@
                 this.play();
                 return;
             }
+
+            this.page_dir = 1;
 
             if (this.data_items[this.cur_row].is_album && !this.data_items[this.cur_row].is_search_result) {
                 this.history.push({
@@ -662,7 +673,35 @@
         this.back = function(){
             _debug('audioclub.back');
 
+            _debug('this.history.length', this.history.length);
+
             if (this.history.length == 1){
+
+                if (single_module.indexOf(this.layer_name) != -1){
+                    if (window.self !== window.top) {
+                        stb.player.stop();
+                        // minimize
+                        this.hide();
+                        parent.postMessage('hide', '*');
+                    } else if (typeof(stbWebWindow) != 'undefined' && windowId !== 1) {
+                        stb.player.stop();
+                        // minimize
+                        this.hide();
+                        stbWindowMgr.windowHide(windowId);
+                    } else if (window.referrer){
+                        stb.player.stop();
+                        window.location = window.referrer;
+                    }
+
+                    this.history.push({
+                        "page" : this.cur_page,
+                        "row" : this.cur_row,
+                        "load_params" : this.load_params
+                    });
+
+                    return;
+                }
+
                 this.hide();
                 main_menu.show();
             }
@@ -942,7 +981,9 @@
 
     var audioclub = new audioclub_constructor();
 
-    audioclub.init_left_ear(word['ears_back']);
+    if (single_module.indexOf('audioclub') == -1) {
+        audioclub.init_left_ear(word['ears_back']);
+    }
 
     audioclub.init_color_buttons([
         {"label" : get_word('track_search'),     "cmd" : audioclub.track_search_dialog},
@@ -1001,6 +1042,14 @@
                     }
 
                 );
+            }
+
+            if (single_module.indexOf('audioclub') != -1) {
+                module.audioclub.history.push({
+                    "page" : module.audioclub.cur_page,
+                    "row" : module.audioclub.cur_row,
+                    "load_params" : module.audioclub.load_params
+                });
             }
 
             main_menu.add(get_word('audioclub_title'), map, 'mm_ico_audio.png', '', module.audioclub);

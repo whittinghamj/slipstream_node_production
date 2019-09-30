@@ -140,8 +140,16 @@ watchdog.prototype.parse_result = function(data){
             {
 
             }
+            case 'send_msg_with_url':
+            {
+
+            }
             case 'send_msg':
             {
+
+                /*if (data.param1){
+                    data.event = 'send_msg_with_video'
+                }*/
 
                 if (!stb.msg){
                     return;
@@ -155,64 +163,97 @@ watchdog.prototype.parse_result = function(data){
                 
                 var self = this;
 
-                if (data.event == 'send_msg_with_video'){
+                if (data.event == 'send_msg_with_video' || data.post_function == 'send_msg_with_video'){
 
-                    stb.msg.set_callback(
-                        function(){
-                            self.send_confirm();
+                    var msg_callback =  function(){
+                        self.send_confirm();
 
-                            var video = {
-                                name  : "",
-                                cmd   : data.param1,
-                                promo : true
-                            };
+                        var video = {
+                            name  : "",
+                            cmd   : data.param1,
+                            promo : true
+                        };
 
-                            if (stb.player.on){
-                                video.restore_item = stb.player.cur_media_item.clone();
+                        if (stb.player.on){
+                            video.restore_item = stb.player.cur_media_item.clone();
 
-                                _debug('stb.cur_layer.layer_name', stb.cur_layer.layer_name);
+                            _debug('stb.cur_layer.layer_name', stb.cur_layer.layer_name);
 
-                                if (stb.cur_layer.layer_name === "vclub"){
-                                    video.restore_item.position = stb.GetPosTime && stb.GetPosTime();
-                                }
+                            if (stb.cur_layer.layer_name === "vclub"){
+                                video.restore_item.position = stb.GetPosTime && stb.GetPosTime();
+                            }
+                        }
+
+                        if (stb.cur_layer.on){
+                            stb.cur_layer.hide();
+                            video.restore_layer = stb.cur_layer;
+                        }
+
+                        video.stop_callback = function(){
+                            _debug('promo_video.stop_callback');
+
+                            if (stb.player.cur_media_item.restore_layer){
+                                stb.player.cur_media_item.restore_layer.show();
                             }
 
-                            if (stb.cur_layer.on){
-                                stb.cur_layer.hide();
-                                video.restore_layer = stb.cur_layer;
+                            if (stb.player.cur_media_item.restore_item){
+                                stb.player.play(stb.player.cur_media_item.restore_item);
+                            }else{
+                                stb.Stop();
+                                stb.player.on = false;
+                            }
+                        };
+
+                        stb.player.play(video);
+                    };
+                }else if (data.event == 'send_msg_with_url'){
+                    var url = data.param1;
+                    msg_callback =  function() {
+                        self.send_confirm();
+                        _debug('open browser');
+                        if (stbWindowMgr.openWebFace){
+
+                            if (gSTB.GetSystemPaths){
+                                var system_paths = gSTB.GetSystemPaths();
+                                _debug('system_paths', system_paths);
+
+                                try{
+                                    system_paths = JSON.parse(system_paths);
+                                }catch (e){
+                                    _debug(e);
+                                }
+
+                                if (system_paths && system_paths.result && system_paths.result.root){
+                                    var path = system_paths.result.root;
+                                }
+                            }else{
+                                path = '/home/web/';
                             }
 
-                            video.stop_callback = function(){
-                                _debug('promo_video.stop_callback');
-
-                                if (stb.player.cur_media_item.restore_layer){
-                                    stb.player.cur_media_item.restore_layer.show();
-                                }
-
-                                if (stb.player.cur_media_item.restore_item){
-                                    stb.player.play(stb.player.cur_media_item.restore_item);
-                                }
-                            };
-
-                            stb.player.play(video);
-                        });
+                            path = path[path.length-1] != '/' ? path+'/' : path;
+                            _debug('path', path);
+                            stbWindowMgr.openWebFace(path+'public/app/ibman/index.html?mode=2&url='+encodeURIComponent(url)+'&view=1');
+                            module.internet.win_inited = true;
+                        }
+                    }
                 }else{
 
-                    stb.msg.set_callback(
-                        function(){
-                            self.send_confirm(function(){
-                                if (data.reboot_after_ok == 1){
-                                    stb.Stop();
-                                    stb.ExecAction('reboot');
-                                }
-                            });
+                    msg_callback = function(){
+                        self.send_confirm(function(){
+                            if (data.reboot_after_ok == 1){
+                                stb.Stop();
+                                stb.ExecAction('reboot');
+                            }
                         });
+                    };
                 }
 
                 stb.msg.push(
                     {
                         msg               : (data.send_time ? '<span style="color: #555">[' + data.send_time + ']</span> ' : '') + data.msg.replace('%mac%', stb.mac).replace('%sn%', stb.serial_number),
-                        auto_hide_timeout : data.auto_hide_timeout || 0
+                        auto_hide_timeout : data.auto_hide_timeout || 0,
+                        callback          : msg_callback || function () {},
+                        valid_until       : data.valid_until
                     }
                 );
                 
@@ -302,6 +343,11 @@ watchdog.prototype.parse_result = function(data){
                 //keydown_observer.emulate_key(key.EXIT);
                 main_menu.hide();
                 stb.player.play_last();
+                break;
+            }
+            case 'play_radio_channel': {
+                keydown_observer.emulate_key(key.MENU);
+                stb.load_radio_channel(parseInt(data.msg));
                 break;
             }
             case 'update_modules':

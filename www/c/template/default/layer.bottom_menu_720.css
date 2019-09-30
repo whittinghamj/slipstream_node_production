@@ -16,10 +16,10 @@
 }
 
 .bottom_menu_container li{
-    height: 31px;
-    padding: 0px 5px 0 9px;
+    height: 26px;
+    padding: 5px 5px 0 9px;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     color: #fff;
     list-style: none;
     white-space: pre;
@@ -27,14 +27,11 @@
     text-overflow: ellipsis;
 }
 
-.bottom_menu_container li div{
-    text-align: center;
-    width: 100%;
-}
-
 .bottom_menu_container li.bottom_menu_active_row{
     background: url("i_720/footer_menu_act.png");
-    color: #ffc923;
+    color: #000;
+    text-shadow: #fff -1px -1px 0;
+    font-family: "Myriad Pro Bold";
 }
 
 .bottom_menu_container li[rel="disabled"]{

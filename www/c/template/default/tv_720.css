@@ -33,8 +33,9 @@
 }
 
 #tv .name_block{
+    color: #fff;
     font-size: 26px;
-    /*text-shadow: #122946 0 -1px 0;*/
+    text-shadow: #122946 0 -1px 0;
     /*margin: 4px 0 0 3px;*/
     padding-left: 3px;
     white-space: pre;
@@ -44,11 +45,16 @@
     /*width: 209px;*/
 }
 
+#tv .wide_container .name_block {
+    width: auto;
+    margin-right: 655px;
+}
+
 #tv .active_name_block{
     /*font-size: 22px;
     color: #002864;
     text-shadow: #fff 0 1px 0;*/
-    margin: 0 15px 0 0;
+    margin: 0 25px 0 0;
     /*white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -60,13 +66,8 @@
 
 #tv .short_container .active_name_block{
     width: auto;
-    margin-top: 6px;
+    margin-top: 11px;
     float: none;
-}
-
-#tv .wide_container .active_name_block{
-    font-size: 26px;
-    line-height: 32px;
 }
 
 #tv .wide_container .blue_row_bg{
@@ -88,7 +89,7 @@
     font-size: 20px;
     text-shadow: #122946 0 -1px 0;*/
     font-size: 20px;
-    color: #919191;
+    color: #bbc4d2;
     margin: 0 0 0 3px;
     padding-left: 5px;
     padding-top: 8px;
@@ -121,7 +122,7 @@
     text-shadow: #fff 0 1px 0;*/
     font-size: 20px;
     line-height: 21px;
-    color: #000;
+    color: #284b82;
     /*margin-top: 8px;
     margin-right: 25px;*/
     white-space: pre;
@@ -139,7 +140,7 @@
     left: 615px;
     padding: 5px 0 0;
     font-size: 22px;
-    color: #ffc528;
+    color: #99a8b5;
     overflow: hidden;
     height: 185px;
 }
@@ -150,8 +151,8 @@
 
 .tv_timetable .mark_memo{
     background-image: url("i_720/epg_green_mark.png");
-    height: 12px;
-    width: 12px;
+    height: 8px;
+    width: 8px;
     position: relative;
     /*left: 3px;*/
     top: 5px;
@@ -159,8 +160,8 @@
 }
 
 .tv_timetable .dummy_mark_memo{
-    height: 12px;
-    width: 12px;
+    height: 8px;
+    width: 8px;
     position: relative;
     /*left: 3px;*/
     top: 5px;
@@ -168,7 +169,7 @@
 }
 
 .tv_timetable .time{
-    color: #ffc528;
+    color: #cfeafe;
     font-family: "Myriad Pro Cond";
 }
 
@@ -200,7 +201,7 @@
     right: 73px;
     width: 100px;
     font-size: 24px;
-    color: #ffc528;
+    color: #99A8B5;
     font-family: "Myriad Pro Cond";
     text-align: right;
 }

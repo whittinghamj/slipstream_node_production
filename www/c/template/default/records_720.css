@@ -25,12 +25,12 @@
 }*/
 
 #records .blue_row_bg .t_start_block{
-    color: #FF4949;
+    color: #f77;
 }
 
 #records .active_t_start_block{
     background: url("i_720/mb_table_act02.png") 217px -4px;
-    color: #202020;
+    color: #000000;
     font-family: "Myriad Pro Cond",sans-serif;
     font-size: 22px;
     height: 47px;
@@ -43,11 +43,12 @@
 }
 
 #records .ch_name_block{
-    color: #919191;
+    color: #99A8B5;
     font-size: 26px;
-    margin: 0 204px 0 3px;
+    margin: 5px 204px 0 3px;
     overflow: hidden;
     padding-left: 3px;
+    text-shadow: 0 -1px 0 #122946;
     white-space: pre;
 }
 
@@ -56,17 +57,17 @@
 }*/
 
 #records .blue_row_bg.close .ch_name_block{
-    color: #fff !important;
+    color: #FFFFFF !important;
 }
 
 #records .active_ch_name_block{
     color: #808080;
     font-size: 26px;
     margin-right: 231px;
-    margin-top: 7px;
+    margin-top: 11px;
     overflow: hidden;
+    text-shadow: 0 1px 0 #FFFFFF;
     white-space: pre;
-    font-weight: bold;
 }
 
 /*#records .active_row_bg[rel="close"] .active_ch_name_block{
@@ -74,7 +75,7 @@
 }*/
 
 #records .active_row_bg.close .active_ch_name_block{
-    color: #202020 !important;
+    color: #002864 !important;
 }
 
 #records .length_block{
@@ -84,7 +85,7 @@
 }
 
 #records .active_length_block{
-    color: #202020;
+    color: #000;
     font-family: "Myriad Pro Cond",sans-serif;
     font-size: 22px;
     height: 27px;

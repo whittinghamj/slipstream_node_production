@@ -9,11 +9,16 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     color: #fff;
+    text-shadow: #122946 0 -1px 0;
     font-size: 18px;
 }
 
 .anecdote_body_container .date{
-    color: #ffc528;
+    color: #99a8b5;
+}
+
+.anecdote_body_container .date{
+    color: #99a8b5;
 }
 
 .anecdote_body_container .rate{
@@ -31,7 +36,7 @@
     position: absolute;
     top: 250px;
     left: 20px;
-    height: 48px;
+    height: 44px;
     width: 37px;
     background-image: url("i/arr_left.png");
 }
@@ -40,7 +45,7 @@
     position: absolute;
     top: 250px;
     right: 20px;
-    height: 48px;
+    height: 44px;
     width: 37px;
     background-image: url("i/arr_right.png");
 }
@@ -69,9 +74,9 @@
     position:absolute;
     top: 82px;
     left: 75px;
-    font: 28px trebuchet ms, Arial, Helvetica, sans-serif;
+    font: 28px "Myriad Pro", Helvetica, sans-serif;
     text-align: center;
-    color: #202020;
+    color: #048;
     width: 89px;
     height: 40px;
 }

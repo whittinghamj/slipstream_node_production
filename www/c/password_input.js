@@ -91,11 +91,14 @@ password_input.prototype.check = function(){
 
 password_input.prototype.add_number = function(num){
     _debug('password_input.add_number', num);
-    
-    this.input.innerHTML = this.input.innerHTML + '*';
-    
-    this.input_value = this.input_value + '' + num;
-    
+
+    if (this.input_value.length <4) {
+
+        this.input.innerHTML = this.input.innerHTML + '&bull;';
+
+        this.input_value = this.input_value + '' + num;
+    }
+
     this.hide_error();
 };
 
@@ -139,7 +142,12 @@ password_input.prototype.bind = function(){
     
     this.hide.bind(key.EXIT, this);
 
-    (function(){}).bind(key.APP, this).bind(key.REC, this).bind(key.RED, this);
+    (function(){})
+        .bind(key.EPG, this)
+        .bind(key.BLUE, this)
+        .bind(key.APP, this)
+        .bind(key.REC, this)
+        .bind(key.RED, this);
 
     (function(key){
 
@@ -151,7 +159,9 @@ password_input.prototype.bind = function(){
     }).bind(key.UP, this, key.UP)
       .bind(key.DOWN, this, key.DOWN)
       .bind(key.PREV, this, key.PREV)
-      .bind(key.NEXT, this, key.NEXT);
+      .bind(key.NEXT, this, key.NEXT)
+      .bind(key.CHANNEL_PREV, this, key.CHANNEL_PREV)
+      .bind(key.CHANNEL_NEXT, this, key.CHANNEL_NEXT);
 };
 
 loader.next();

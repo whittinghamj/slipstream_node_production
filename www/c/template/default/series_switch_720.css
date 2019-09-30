@@ -18,7 +18,7 @@
     background: url("i_720/input_channel.png") no-repeat;
     font: 32px "Myriad Pro Cond";
     text-align: center;
-    color: #202020;
+    color: #048;
     overflow: hidden;
     white-space: pre;
     padding: 6px 0 0 0;
@@ -31,17 +31,17 @@
     width: 100%;
     font-size: 14px;
     color: #333;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     text-align: center
 }
 
 .series_switch .continuously{
     position: absolute;
-    top: 125px;
+    top: 129px;
     width: 100%;
     font-size: 14px;
-    color: #202020;
-    font-weight: bold;
+    color: #333;
+    font-family: "Myriad Pro Bold";
     text-align: center
 }
 /* END SERIES SWITCH */

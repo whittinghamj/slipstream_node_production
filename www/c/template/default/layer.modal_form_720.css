@@ -67,7 +67,7 @@
     /*float: right;*/
     background: url(i/btn2.png) right no-repeat;
     font-size: 19px;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     text-align: center;
     color: #fff;
     line-height: 28px;
@@ -135,7 +135,7 @@
 }
 
 .modal_form .fixed_container{
-    width: 283px;
+    width: 280px;
     float: right;
 }
 

@@ -1,10 +1,11 @@
 .radio_widget_block{
     position: absolute;
-    left: 19px;
-    top : 294px;
+    left: 17px;
+    top : 240px;
     width: 205px;
     height: 68px;
     color: #fff;
+    text-shadow: #000 0 -1px 0;
     font-size: 16px;
     text-align: center;
     background-image: url("i/25alfa_20.png");
@@ -22,7 +23,7 @@
 
 .radio_widget_block .items{
     margin: 0 auto;
-    color: #ffc528;
+    color: #99A8B5;
     font-size: 14px;
 }
 

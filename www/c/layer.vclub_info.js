@@ -143,8 +143,14 @@ vclub_info.prototype.fill = function(item){
                      '<div class="hr_filminfo"></div>' + item.description + '<br><br>';
 
     this.full_info.innerHTML = full_info;
-    
-    this.film_cover.innerHTML = '<img src="'+ item.screenshot_uri +'">';
+
+    if (item.screenshot_uri){
+        this.film_cover.innerHTML = '<img src="'+ item.screenshot_uri +'">';
+    }else{
+        this.film_cover.innerHTML = '';
+    }
+
+    this.scrollbar.render();
 };
 
 vclub_info.prototype.shift = function(dir){
@@ -202,7 +208,7 @@ vclub_info.prototype.bind = function(){
     
     (function(){
 
-        if (single_module){
+        if (single_module.length){
             return;
         }
 

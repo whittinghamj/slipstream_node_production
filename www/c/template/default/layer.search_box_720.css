@@ -24,7 +24,7 @@
 .lang_container ul li{
     float: left;
     width: 30px;
-    height: 20px;
+    height: 18px;
     /*margin: 1px 1px 0 0;*/
     border: 0 solid #fff;
     text-align: center;
@@ -32,8 +32,7 @@
     color: #fff;
     white-space: pre;
     overflow: hidden;
-    padding: 0 0 0 0;
-    line-height: 19px;
+    padding: 2px 0 0 0;
 }
 
 .lang_container ul li[rel="double_cell"]{
@@ -43,7 +42,7 @@
 .lang_container ul li.search_active_cell{
     background: url("i_720/footer_search_act.png") no-repeat;
     color: #000;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     text-shadow: #fff -1px -1px 0;
 }
 

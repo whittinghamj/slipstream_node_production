@@ -17,29 +17,26 @@
 }
 
 .main_menu_date{
-    font-family: "Roboto", serif;
-    font-weight: bold;
+    font-family: "Myriad Pro", serif;
     font-size: 22px;
-    color: #ffc528;
+    color: #99a8b5;
 }
 
 .main_menu_time{
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     font-size: 34px;
-    color: #ffc528;
+    color: #ccd6de;
     margin-left: 12px;
     /*margin-right: 65px;*/
-    font-family: "Roboto", sans-serif;
 }
 
 .main_menu_date_bar{
     position: absolute;
-    width: 600px;
+    width: 584px;
     top: 38px;
-    right: 0;
-    font-family: "Roboto", sans-serif;
+    right: 70px;
     text-align: right;
-    padding-right: 65px;
+    font-family: "Myriad Pro Cond", serif;
 }
 
 .mm_menu_hor{
@@ -54,8 +51,8 @@
     position: absolute;
     width: 320px;
     height: 210px;
-    bottom: 74px;
-    left: 382px;
+    bottom: 60px;
+    left: 0;
     background: url(i_720/mm_hor_left.png);
 }
 
@@ -63,8 +60,8 @@
     position: absolute;
     width: 320px;
     height: 210px;
-    bottom: 74px;
-    right: 382px;
+    bottom: 60px;
+    right: 0;
     background: url(i_720/mm_hor_right.png);
 }
 
@@ -72,27 +69,19 @@
     float: left;
     width: 360px;
     height: 210px;
-    font: 26px "Roboto";
+    font: 40px "Myriad Pro Cond";
     color: #fff;
     text-transform: uppercase;
     text-align: center;
-}
-
-.menu_hor_cell span{
-    line-height: 42px;
-}
-
-.menu_hor_cell_act span{
-    line-height: 42px;
 }
 
 .menu_hor_cell_act{
     float: left;
     width: 360px;
     height: 210px;
-    font: 30px "Roboto";
-    font-weight: bold;
+    font: 44px "Myriad Pro Cond";
     color: #fff;
+    text-shadow: #122946 1px 1px 0;
     text-transform: uppercase;
     text-align: center;
     background: url(i_720/mm_hor_bg1.png) no-repeat;
@@ -135,28 +124,26 @@
 
 .mm_menu_vert_body .mm_vert_container div{
     height: 38px;
-    width: 356px;
-    font: 26px "Roboto";
+    width: 346px;
+    font: 26px "Myriad Pro";
     color: #ffffff;
     text-transform: uppercase;
+    text-shadow: #1f3c62 0 -1px 0;
     background: url(i_720/mm_vert_cell.png) bottom left;
-    /*margin-left: 14px;*/
-    /*padding-left: 14px;
-    padding-top: 8px;*/
-    padding: 3px 0 5px 34px;
+    margin-left: 14px;
+    padding-left: 14px;
+    padding-top: 8px;
     overflow: hidden;
     white-space: pre;
     text-overflow: ellipsis;
 }
 
 .mm_menu_vert_body .mm_vert_container .active{
-    color: #202020;
+    color: #002864;
+    text-shadow: #ffffff 0 1px 0;
     background: url(i_720/mm_vert_cell.png) top left;
     background-position: 0 -2px;
-    padding-top: 4px;
-    height: 37px;
-    font-weight: bold;
-    font-family: "Roboto", sans-serif;
+    padding-top: 8px;
 }
 
 .main_menu_ver
@@ -165,6 +152,6 @@
     right: 70px;
     bottom: 30px;
     font-size: 22px  !important;
-    color: #ffc528  !important;
+    color: #ccd6de  !important;
 }
 /* END MAIN MENU */

@@ -4,7 +4,7 @@
 }
 
 .bold{
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
 }
 
 .uppercase{
@@ -35,7 +35,7 @@
     background-image: url("i_480/mb_icons.png");
     background-position: 0px 0px;
     float: left;
-    margin: 1px 0 0 3px;
+    margin: 1px 0 0 4px;
 }
 
 .sd_block{
@@ -44,7 +44,7 @@
     background-image: url("i_480/mb_icons.png");
     background-position: -24px 0px;
     float: left;
-    margin: 1px 0 0 3px;
+    margin: 1px 0 0 4px;
 }
 
 .fav_block{
@@ -71,7 +71,8 @@
 .name_block, .title_block{
     color: #fff;
     font-size: 18px;
-    margin: 0px 0 0 3px;
+    text-shadow: #122946 0 -1px 0;
+    margin: 3px 0 0 3px;
     padding-left: 5px;
     white-space: pre;
     overflow: hidden;
@@ -83,21 +84,22 @@
 }*/
 
 .blue_row_bg.close .name_block{
-    color: #919191 !important;
+    color: #99A8B5 !important;
 }
 
 .number_block{
-    background-image: url("i_480/mb_icons.png");
-    background-position: -92px 0;
-    width: 34px;
-    height: 21px;
+    background: url("i_480/mb_chan.png") no-repeat;
+    width: 54px;
+    height: 19px;
     float: left;
-    margin: 1px 0 0 3px;
-    color: #202020;
+    margin: 1px 0 0 5px;
+    color: #002864;
+    text-shadow: #fff 0 1px 0;
     font-size: 17px;
     text-align: center;
     white-space: pre;
     overflow: hidden;
+    padding-top: 2px;
 }
 
 .wide_container{
@@ -114,7 +116,7 @@
     left: 69px;
     top: 58px;
     width: 580px;
-    height: 25px;
+    height: 24px;
     background-image: url("i_480/mb_table.png");
 }
 
@@ -144,7 +146,7 @@
     height: 49px;
     left: 55px;
     background: url("i_480/mb_table_act.png") left top no-repeat;
-    padding: 5px 0 0 10px;
+    padding: 5px 0 0 13px;
 }
 
 .wide_container .moved_active_row_bg{
@@ -171,10 +173,10 @@
     position: absolute;
     width: 350px;
     height: 49px;
-    left: 55px;
+    left: 54px;
     background: url("i_480/mb_table_act.png");
     background-position: 0 -162px;
-    padding: 5px 0 0 10px;
+    padding: 5px 0 0 13px;
 }
 
 .short_container .active_row_bg{
@@ -184,7 +186,7 @@
     left: 54px;
     background: url("i_480/mb_table_act.png");
     background-position: 0 -108px;
-    padding: 5px 0 0 8px;
+    padding: 8px 0 0 8px;
     margin-top: 2px;
 }
 
@@ -192,8 +194,8 @@
     width: 24px;
     height: 31px;
     background-image: url("i_480/mb_icons.png");
-    background-position: 0 -21px;
-    margin: 3px 3px 0 5px;
+    background-position: 0px -21px;
+    margin: 5px 2px 0 0;
     float:left;
 }
 
@@ -202,7 +204,7 @@
     height: 31px;
     background-image: url("i_480/mb_icons.png");
     background-position: -24px -21px;
-    margin: 3px 3px 0 5px;
+    margin: 5px 2px 0 0;
     float:left;
 }
 
@@ -210,16 +212,16 @@
     width: 27px;
     height: 31px;
     background-image: url("i_480/mb_icons.png");
-    background-position: -48px -20px;
+    background-position: -48px -21px;
+    margin-top:2px;
     float:left;
-    margin-top: 1px;
 }
 
 .active_lock_block, .active_scrambled_block{
     width: 16px;
     height: 30px;
     background: url("i_480/mb_icons.png") no-repeat -75px -22px;
-    margin: 4px 2px 0 0;
+    margin-top: 3px;
     float:left;
 }
 
@@ -229,9 +231,9 @@
 
 .active_name_block, .active_title_block{
     font-size: 22px;
-    /*font-weight: bold;*/
-    color: #202020;
-    margin-top: 3px;
+    color: #002864;
+    text-shadow: #fff 0 1px 0;
+    margin-top: 6px;
     margin-right: 25px;
     white-space: pre;
     overflow: hidden;
@@ -243,31 +245,32 @@
 }*/
 
 .active_row_bg.close .active_name_block, .moved_active_row_bg.close .active_name_block{
-    color: #919191 !important;
+    color: #808080 !important;
 }
 
 .active_number_block{
-    width: 34px;
+    width: 54px;
     height: 29px;
-    background-image: url("i_480/mb_icons.png");
-    background-position: -92px -21px;
-    margin: 3px 3px 0 7px;
+    background: url("i_480/mb_chan.png") no-repeat 0 -21px;
+    margin: 2px 3px 0 7px;
     float:left;
     font-size: 20px;
-    color: #202020;
+    color: #fff;
+    text-shadow: #122946 0 -1px 0;
     text-align: center;
     white-space: pre;
     overflow: hidden;
-    padding-top: 2px;
+    padding-top: 4px;
 }
 
 
 .footer_text{
     font-size: 15px;
     color: #001a33;
+    text-shadow: #fff 0 1px 0;
     float: left;
     margin: 13px 0 0 8px;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
 }
 
 .footer_btn{
@@ -300,7 +303,7 @@
 }
 
 .disable_color_btn_text{
-    color: #919191 !important;
+    color: #707070 !important;
 }
 
 .mb_header_first{
@@ -322,24 +325,24 @@
 }
 
 .mb_header_info {
-    position: absolute;
-    left: 75px;
-    top: 410px;
+    color: #FFFFFF;
     font-size: 12px;
-    color: #fff;
+    left: 75px;
+    position: absolute;
+    top: 410px;
 }
 
 .color_button_bar{
     position: absolute;
-    width: 690px;
+    width: 580px;
     height: 40px;
     background-image: url("i_480/footer_bg.png");
     top: 435px;
-    padding-left: 30px;
+    padding-left: 70px;
 }
 
 .color_button_bar table{
-    width: 668px;
+    width: 570px;
     height: 40px;
     border: 0;
     border-collapse:collapse;
@@ -364,10 +367,11 @@
 
 .color_button_bar span{
     font-size: 13px;
-    color: #fff;
+    color: #001a33;
+    text-shadow: #fff 0 1px 0;
     float: left;
-    margin: 12px 0 0 8px;
-    /*font-weight: bold;*/
+    margin: 13px 0 0 8px;
+    font-family: "Myriad Pro Bold";
 }
 
 .color_button_bar span sup{
@@ -395,7 +399,7 @@
    /* position: absolute;
     top: 18px;
     left: 21px;*/
-    margin: 21px 0 0 21px;
+    margin: 18px 0 0 21px;
     font-size: 20px;
     color: #99A8B5;
     font-family: "Myriad Pro Cond", sans-serif;
@@ -414,16 +418,20 @@
     /*position: absolute;
     top: 14px;
     left: 60px;*/
-    margin: 10px 0 0 2px;
+    margin: 14px 0 0 2px;
     float: left;
-    width: 595px;
+    width: 600px;
     font-size: 25px;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     color: #fff;
     text-shadow: #000 0 1px 0;
     white-space: pre;
 	overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.time_format_12h{
+    width: 590px;
 }
 
 .pos_bar{
@@ -437,17 +445,17 @@
 
 .pos_button{
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 30px;
+    height: 10px;
     background: url("i_480/osd_line_pos.png");
-    margin: 5px 0 0 6px;
+    margin: 6px 0 0 6px;
     left: 0;
 }
 
 .pos_time{
     position: absolute;
     top: 68px;
-    right: 48px;
+    right: 55px;
     font-size: 20px;
     color: #fff;
     text-shadow: #000 0 1px 0;
@@ -479,7 +487,7 @@
 .pos_series{
     position: absolute;
     top: 68px;
-    left: 46px;
+    left: 55px;
     font-size: 20px;
     color: #fff;
     text-shadow: #000 0 1px 0;
@@ -529,7 +537,7 @@
     padding: 8px 47px 0 0;
     font-size: 22px;
     text-shadow: #fff 0 1px 0;
-    color: #202020;
+    color: #0064c8;
 }
 
 
@@ -571,7 +579,7 @@
 /* QUICK CHANNEL SWITCH */
 .quick_ch_switch{
     position:absolute;
-    width: 239px;
+    width: 300px;
     height: 196px;
     left: 400px;
     top: 60px;
@@ -582,10 +590,10 @@
     position:absolute;
     top: 72px;
     left: 75px;
-    font: 45px trebuchet ms, Arial, Helvetica, sans-serif;
+    font: 45px "Myriad Pro", Helvetica, sans-serif;
     text-align: center;
-    color: #202020;
-    width: 89px;
+    color: #048;
+    width: 150px;
     height: 40px;
 }
 /* END QUICK CHANNEL SWITCH */
@@ -595,22 +603,23 @@
 /* EARS */
 .ears_left_container{
     position: absolute;
-    left: 20px;
+    left: 0;
     top: 58px;
 }
 
 .ears_left{
     width: 40px;
+    padding-left: 20px;
     height: 350px;
-    background-image: url("i_480/ears.png");
+    background-image: url("i_480/ears2.png");
     background-position: left center;
     vertical-align: middle;
     display: table-cell;
 }
 
 .ears_left div{
-    margin-left: 14px;
-    font: 18px Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+    font: 18px "Myriad Pro", Helvetica, sans-serif;
     color: #fff;
 }
 
@@ -621,17 +630,17 @@
 }
 
 .ears_right{
-    width: 40px;
+    width: 60px;
     height:350px;
-    background-image: url("i_480/ears.png");
+    background-image: url("i_480/ears2.png");
     background-position: right center;
     vertical-align: middle;
     display: table-cell;
 }
 
 .ears_right div{
-    margin-left: 13px;
-    font: 18px Arial, Helvetica, sans-serif;
+    margin-left: 7px;
+    font: 18px "Myriad Pro", Helvetica, sans-serif;
     color: #fff;
     text-align: center;
     width: 14px;
@@ -641,18 +650,14 @@
     width: 15px;
     height: 18px;
     background-image: url("i_480/ears_arrow_l.png");
-    margin: 15px 0 0 0;
+    margin: 15px 0;
 }
 
 .ears_arrow_right{
     width: 15px;
     height: 18px;
     background-image: url("i_480/ears_arrow_r.png");
-    margin: 15px 0 0 0;
-}
-
-.ears_arrow_right.top_arrow{
-    margin-top: 0;
+    margin: 15px 0;
 }
 /* END EARS */
 
@@ -664,11 +669,12 @@
 
 .aspect_block{
     font-size: 22px;
-    color: #fff;
+    color: #048;
+    text-shadow: #555 -1px -1px 2px !important;
     background: url("i_480/aspect_bg.png") left;
-    height: 35px;
-    padding: 6px 0 0 25px;
-    font-weight: bold;
+    height: 31px;
+    padding: 10px 0 0 25px;
+    font-family: "Myriad Pro Bold";
     float: left;
 }
 
@@ -690,7 +696,7 @@
 .playback_progress{
     height: 10px;
     width: 0;
-    background-color: #202020;
+    background-color: #2c6eff;
     border-radius: 2px;
     -webkit-transition: all 0.3s ease;
 }
@@ -705,7 +711,7 @@
     color: #fff;
     text-shadow: #555 -1px -1px 2px;
     font-size: 28px;
-    font-weight: bold;
+    font-family: "Myriad Pro Bold";
     margin: 4px 8px 0 8px;
     line-height: 28px;
 }
@@ -724,17 +730,18 @@
 
 .time_shift_info_block, .ad_skip_block{
     font-size: 22px;
-    color: #fff;
+    color: #048;
+    text-shadow: #555 -1px -1px 2px !important;
     background: url("i_480/aspect_bg.png") left;
-    height: 35px;
-    padding: 6px 0 0 25px;
-    font-weight: bold;
+    height: 31px;
+    padding: 10px 0 0 25px;
+    font-family: "Myriad Pro Bold";
     float: left;
 }
 
 .ad_skip_txt{
     padding-right: 30px;
-    background: url("i_480/skip.png") right 5px no-repeat;
+    background: url("i_480/skip.png") right top no-repeat;
 }
 
 .time_shift_info_block_right{

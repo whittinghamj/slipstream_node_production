@@ -29,7 +29,7 @@
 
 #records .active_t_start_block{
     background: url("i/mb_table_act02.png") 118px -4px;
-    color: #202020;
+    color: #000000;
     font-family: "Myriad Pro Cond",sans-serif;
     height: 40px;
     overflow: hidden;
@@ -41,11 +41,12 @@
 }
 
 #records .ch_name_block{
-    color: #919191;
+    color: #99A8B5;
     font-size: 20px;
-    margin: 0 103px 0 3px;
+    margin: 3px 103px 0 3px;
     overflow: hidden;
     padding-left: 3px;
+    text-shadow: 0 -1px 0 #122946;
     white-space: pre;
 }
 
@@ -54,18 +55,17 @@
 }*/
 
 #records .blue_row_bg.close .ch_name_block{
-    color: #fff !important;
+    color: #FFFFFF !important;
 }
 
 #records .active_ch_name_block{
     color: #808080;
     font-size: 22px;
     margin-right: 130px;
-    margin-top: 6px;
+    margin-top: 8px;
     overflow: hidden;
-    text-shadow: none;
+    text-shadow: 0 1px 0 #FFFFFF;
     white-space: pre;
-    font-weight: bold;
 }
 
 /*#records .active_row_bg[rel="close"] .active_ch_name_block{
@@ -73,7 +73,7 @@
 }*/
 
 #records .active_row_bg.close .active_ch_name_block{
-    color: #202020 !important;
+    color: #002864 !important;
 }
 
 #records .length_block{
@@ -83,7 +83,7 @@
 }
 
 #records .active_length_block{
-    color: #202020;
+    color: #000;
     font-family: "Myriad Pro Cond",sans-serif;
     height: 20px;
     overflow: hidden;

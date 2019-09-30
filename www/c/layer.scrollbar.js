@@ -65,4 +65,14 @@ scrollbar.prototype.refresh = function(){
     this.scroll_button.style.top = top + 'px';
 };
 
+scrollbar.prototype.render = function(){
+    _debug('scrollbar.refresh');
+
+    if (this.for_dom_obj.offsetHeight == this.for_dom_obj.scrollHeight){
+        this.dom_obj.hide();
+    }else{
+        this.dom_obj.show();
+    }
+};
+
 loader.next();

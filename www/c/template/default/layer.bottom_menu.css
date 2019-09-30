@@ -27,14 +27,11 @@
     text-overflow: ellipsis;
 }
 
-.bottom_menu_container li div{
-    text-align: center;
-    width: 100%;
-}
-
 .bottom_menu_container li.bottom_menu_active_row{
     background: url("i/footer_menu_act.png");
-    color: #ffc923;
+    color: #000;
+    text-shadow: #fff -1px -1px 0;
+    font-weight:bold;
 }
 
 .bottom_menu_container li[rel="disabled"]{

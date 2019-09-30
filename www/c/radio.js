@@ -68,7 +68,7 @@
 
                     stb.player.radio_idx = idx;
 
-                    self.set_active_row(self.cur_row);
+                    /*self.set_active_row(self.cur_row);*/
                 }
             });
 
@@ -94,7 +94,7 @@
                         }
                     }
 
-                    self.set_active_row(self.cur_row);
+                    /*self.set_active_row(self.cur_row);*/
                 }
             });
 
@@ -160,15 +160,32 @@
                 this.load_params.fav = true;
                 this.load_params.sortby = 'fav';
             }
+            if (stb.player.cur_media_item && stb.player.cur_media_item.radio) {
+                if (this.cur_page != stb.player.cur_media_item.page) {
+                    this.load_params.p = this.cur_page = stb.player.cur_media_item.page;
+                }
+            }
+
+            this.load_params.all = 0;
 
             this.superclass.show.call(this);
+
         };
 
         this.hide = function(do_not_reset){
             _debug('radio.hide');
 
-            this.superclass.hide.call(this, do_not_reset);
+            /*this.superclass.hide.call(this, do_not_reset);*/
             /*stb.player.stop();*/
+
+            if (!do_not_reset) {
+                this.sidebar && this.sidebar.reset && this.sidebar.reset();
+
+                if (this.sidebar && this.sidebar.on) {
+                    this.sidebar.hide();
+                }
+            }
+            this.superclass.hide.call(this, do_not_reset);
             this.update_header_path([{"alias" : "playing", "item" : "*"}]);
         };
 
@@ -184,7 +201,25 @@
                 }
                 this.update_header_path(header_path);
 
-                this.hide();
+                if (single_module.indexOf(this.layer_name) != -1){
+                    if (window.self !== window.top) {
+                        stb.player.stop();
+                        // minimize
+                        this.hide();
+                        parent.postMessage('hide', '*');
+                    } else if (typeof(stbWebWindow) != 'undefined' && windowId !== 1) {
+                        stb.player.stop();
+                        // minimize
+                        this.hide();
+                        stbWindowMgr.windowHide(windowId);
+                    } else if (window.referrer){
+                        stb.player.stop();
+                        window.location = window.referrer;
+                    }
+                    return;
+                }
+
+                this.hide(true);
                 main_menu.show();
             }).bind(key.EXIT, this).bind(key.LEFT, this).bind(key.MENU, this);
 
@@ -202,6 +237,17 @@
             if (this.data_items) {
                 stb.player.playlist = this.data_items;
             }
+
+            if(!this.data_items[this.cur_row].open){
+
+                if (this.data_items[this.cur_row].hasOwnProperty('error') && this.data_items[this.cur_row].error){
+                    stb.notice.show(get_word('error_channel_'+this.data_items[this.cur_row].error));
+                }else{
+                    stb.notice.show(get_word('msg_channel_not_available'));
+                }
+                return;
+            }
+
             stb.player.play(this.data_items[this.cur_row]);
         };
 
@@ -232,7 +278,7 @@
 
             }
 
-            if (num==0 && stb.player.cur_media_item.radio && typeof (stb.player.radio_idx) != 'undefined') {
+            if (num==0 && stb.player.cur_media_item.radio && typeof (stb.player.radio_idx) != 'undefined'  && stb.player.cur_media_item.id == this.data_items[this.cur_row].id) {
                 var idx = stb.player.radio_idx;
                 this.data_items[idx].playing = 1;
                 this.map[idx].playing_block.show();
@@ -240,7 +286,25 @@
                 this.data_items[idx].paused = 0;
                 this.map[idx].paused_block.hide();
 
-                if (this.cur_row == idx) {
+                if (this.cur_row == idx  && this.cur_page == stb.player.cur_media_item.page) {
+                    this.active_row.playing_block.show();
+                    this.active_row.paused_block.hide();
+                }
+            } else if (typeof(stb.player.radio_idx) != 'undefined' || (stb.player.cur_media_item && stb.player.cur_media_item.radio)) {
+                var idx = typeof(stb.player.radio_idx) != 'undefined' ? stb.player.radio_idx : this.data_items.getIdxByVal('id', stb.player.cur_media_item.id);
+                idx = idx || 0;
+                /*this.superclass.set_active_row.call(this, idx);*/
+                if (stb.player.cur_media_item && this.data_items[idx] && this.data_items[idx].id == stb.player.cur_media_item.id) {
+                    if (stb.player.cur_media_item.playing) {
+                        this.map[idx].paused_block.hide();
+                        this.map[idx].playing_block.show();
+                    }
+                    if (stb.player.cur_media_item.paused) {
+                        this.map[idx].paused_block.show();
+                        this.map[idx].playing_block.hide();
+                    }
+                }
+                if (this.cur_row == idx && this.cur_page == stb.player.cur_media_item.page) {
                     this.active_row.playing_block.show();
                     this.active_row.paused_block.hide();
                 }
@@ -251,6 +315,13 @@
         this.shift_row_ch_channel = function(dir){
             window.clearTimeout(this.row_callback_timer);
             this.data_items[this.cur_row].unlocked = false;
+            if (this.data_items[this.cur_row].hasOwnProperty('open') && !this.data_items[this.cur_row].open){
+                this.map[this.cur_row]['row'].addClass('close');
+                this.active_row['row'].addClass('close');
+            }else{
+                this.map[this.cur_row]['row'].removeClass('close');
+                this.active_row['row'].removeClass('close');
+            }
             this.superclass.shift_row.call(this, dir);
             _debug('before set timeout');
             var self = this;
@@ -476,7 +547,6 @@
                     _debug('fav_radio_ids', result);
                     stb.player.fav_radio_ids  = typeof(result) != 'undefined' && result ? result : [];
                     _debug('stb.player.fav_radio_ids', stb.player.fav_radio_ids);
-                    /*this.channels_loaded();*/
                 },
 
                 this
@@ -529,7 +599,7 @@
     radio.bind();
     radio.init();
 
-    if (single_module != 'radio'){
+    if (single_module.indexOf('radio') == -1){
         radio.init_left_ear(word['ears_back']);
     }
 
@@ -546,25 +616,34 @@
         {
             "label" : word['radio_by_number'],
             "cmd" : function(){
+                stb.player.stop();
                 this.parent.load_params.fav = false;
                 this.parent.load_params.sortby = 'number';
                 stb.user.fav_radio_on = 0;
+                module.radio_widget && module.radio_widget.set_radio_widget_items_list();
+                this.parent.load_params.all = 0;
             }
         },
         {
             "label" : word['radio_by_title'],
             "cmd" : function(){
+                stb.player.stop();
                 this.parent.load_params.fav = false;
                 this.parent.load_params.sortby = 'name';
                 stb.user.fav_radio_on = 0;
+                module.radio_widget && module.radio_widget.set_radio_widget_items_list();
+                this.parent.load_params.all = 0;
             }
         },
         {
             "label"   : word['radio_only_favorite'],
             "cmd" : function(){
+                stb.player.stop();
                 this.parent.load_params.sortby = 'fav';
                 this.parent.load_params.fav = true;
                 stb.user.fav_radio_on = 1;
+                module.radio_widget && module.radio_widget.set_radio_widget_items_list();
+                this.parent.load_params.all = 0;
             }
         }
     ];

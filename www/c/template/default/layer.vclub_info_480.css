@@ -9,6 +9,7 @@
 
 .mb_filminfo_name{
     width: 622px;
+    text-shadow: #000 -1px -1px 0;
     font-size: 22px;
     color: #fff;
 }
@@ -30,7 +31,7 @@
 }
 
 .mb_filminfo_fullinfo span{
-    color: #ffc528;
+    color: #cfeafe;
 }
 
 .hr_filminfo{
@@ -53,7 +54,7 @@
     height: 300px;
 }
 .mb_filminfo_trans{
-    /*background: url("i_480/mb_filminfo_trans.png") bottom left;*/
+    background: url("i_480/mb_filminfo_trans.png") bottom left;
     height: 35px;
     width: 350px;
     position: absolute;
