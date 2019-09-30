@@ -42,6 +42,9 @@ foreach($keys as $key){
     }
 }
 
+error_log("---------- MAG API Query ----------")
+error_log("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
+
 $api_call = @file_get_contents("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
 
 echo $api_call;
