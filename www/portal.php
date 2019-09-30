@@ -34,7 +34,7 @@ foreach($_REQUEST as $response){
     $getdata .= $response .'&';
 }
 
-error_log($_REQUEST);
+error_log($getdata);
 
 $api_call = @file_get_contents("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
 
