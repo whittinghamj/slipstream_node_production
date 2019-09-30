@@ -29,12 +29,18 @@ $gmode              = (!empty($_REQUEST["gmode"])                       ? intval
 $continue           = false;
 $debug              = false;
 
-$getdata = '';
-foreach($_REQUEST as $response){
-    $getdata .= $response .'&';
+//Query String compile fix.
+$keys = array_keys($_REQUEST);
+$current_key = 0;
+$getData = "";
+foreach($keys as $key){
+    $temp_string = $key . "=" . $_REQUEST[$key];
+    $getData .= $temp_string;
+    if($current_key <= count($keys)) {
+        $getData .= "&";
+        $current_key += 1;
+    }
 }
-
-error_log($getdata);
 
 $api_call = @file_get_contents("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
 
