@@ -2,7 +2,7 @@
 
 # bash git update script
 
-echo "SlipStream Update Script v1"
+echo "SlipStream Node Update Script v1"
 
 echo "Checking github.com for updates."
 cd /root/slipstream/node && git --git-dir=/root/slipstream/node/.git pull origin master
@@ -55,7 +55,7 @@ cp /root/slipstream/node/www/filebrowser.php /var/www/html/play/channels
 
 cp -R /root/slipstream/node/www/speedtest /var/www/html
 
-cp -R /root/slipstream/node/www/c /var/www/html
+# cp -R /root/slipstream/node/www/c /var/www/html
 cp /root/slipstream/node/www/portal.php /var/www/html/
 
 # set permissions to everyone for php files
@@ -69,7 +69,7 @@ cp -r /root/slipstream/node/fonts /opt/slipstream
 cp /root/slipstream/node/scripts/system_stats.sh /opt/slipstream
 
 # run nginx / php updates
-sed -i 's/client_max_body_size 3m;/client_max_body_size 5000m;/' /etc/nginx/nginx.conf
+# sed -i 's/client_max_body_size 3m;/client_max_body_size 5000m;/' /etc/nginx/nginx.conf
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 5000M/' /etc/php/7.2/fpm/php.ini
 sed -i 's/default_socket_timeout = 60/default_socket_timeout = 600/' /etc/php/7.2/fpm/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 5000M/' /etc/php/7.2/fpm/php.ini
@@ -94,6 +94,7 @@ else
 	echo "Updating NGINX and restarting."
 	cp $file1 $file2
 	service nginx restart
+	service php-fom restart
 fi
 
 # ffmpeg fix
