@@ -31,7 +31,7 @@ $debug              = false;
 
 // error logging
 foreach($_REQUEST as $key => $value){
-    error_log("MAG VarL ".$key." => ".$value);
+    error_log("MAG VAR: key = '".$key."'' => value = '".$value."'");
 }
 
 //Query String compile fix.
