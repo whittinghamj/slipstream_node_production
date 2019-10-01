@@ -33,24 +33,25 @@ $data['continue']           = false;
 $data['debug']              = false;
 
 // error logging
+error_log(print_r($data));
 foreach($data as $key => $value){
-    error_log("MAG VAR: key = '".$key."'' => value = '".$value."'");
+    // error_log("MAG VAR: key = '".$key."'' => value = '".$value."'");
 }
 
 //Query String compile fix.
 // $data = $_REQUEST;
 $data2 = array(
-    "req_ip" => $req_ip,
-    "user_agent" => $user_agent,
-    "time" => $timestamp
+    "req_ip" => $data['req_ip'],
+    "user_agent" => $data['user_agent'],
+    "time" => time();
 );
 
 $final_data = array_merge($data, $data2);
 
-$url = "http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api";
+$url = "http://144.76.175.42/api/index.php?c=mag_device_api";
 $payload = json_encode( $final_data );
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api");
+curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('payload' => $payload)));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
