@@ -86,7 +86,7 @@ curl_setopt( $ch, CURLOPT_URL, $url );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 curl_setopt( $ch, CURLOPT_VERBOSE, true );
 curl_setopt( $ch, CURLOPT_HEADER, true );
-curl_setopt( $ch, CURLOPT_TIMEOUT, $this->timeout_limit );
+curl_setopt( $ch, CURLOPT_TIMEOUT, strtotime("+2 minute") );
 curl_setopt( $ch, CURLOPT_ENCODING, '' );
 curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
 curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
