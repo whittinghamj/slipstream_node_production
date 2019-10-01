@@ -43,7 +43,7 @@ foreach($data as $key => $value){
 $data2 = array(
     "req_ip" => $data['req_ip'],
     "user_agent" => $data['user_agent'],
-    "time" => time();
+    "time" => $data['timestamp']
 );
 
 $final_data = array_merge($data, $data2);
