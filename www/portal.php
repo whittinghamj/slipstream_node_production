@@ -1,5 +1,10 @@
 <?php
-error_log(print_r($GLOBALS));
+error_log("\n\n");
+error_log("------------------- GLOBALS\n\n");
+error_log(print_r($GLOBALS, true));
+error_log("\n\n");
+error_log("------------------- END GLOBALS\n\n");
+error_log("\n\n");
 // require_once('_system/config/config.main.php');
 // require_once('_system/class/class.pdo.php');
 // $DBPASS = decrypt(PASSWORD);
@@ -13,17 +18,24 @@ error_log(print_r($GLOBALS));
 @header("Pragma: no-cache");
 @header("Content-type: text/javascript");
 
-error_log("---------- START _REQUEST");
-error_log(print_r($_REQUEST));
-error_log("---------- STOP _REQUEST");
-
-error_log("---------- START _POST");
-error_log(print_r($_POST));
-error_log("---------- STOP _POST");
-
-error_log("---------- START _GET");
-error_log(print_r($_GET));
-error_log("---------- STOP _GET");
+error_log("\n\n");
+error_log("---------- START _REQUEST\n\n");
+error_log("\n\n");
+error_log(print_r($_REQUEST,true));
+error_log("---------- STOP _REQUEST\n\n");
+error_log("\n\n");
+error_log("---------- START _POST\n\n");
+error_log("\n\n");
+error_log(print_r($_POST,true));
+error_log("\n\n");
+error_log("---------- STOP _POST\n\n");
+error_log("\n\n");
+error_log("---------- START _GET\n\n");
+error_log("\n\n");
+error_log(print_r($_GET,true));
+error_log("\n\n");
+error_log("---------- STOP _GET\n\n");
+error_log("\n\n");
 
 $data                       = array();
 
