@@ -30,24 +30,25 @@ $continue           = false;
 $debug              = false;
 
 //Query String compile fix.
-$keys = array_keys($_REQUEST);
-$current_key = 0;
-$getData = "";
-foreach($keys as $key){
-    $temp_string = $key . "=" . $_REQUEST[$key];
-    $getData .= $temp_string;
-    if($current_key <= count($keys)) {
-        $getData .= "&";
-        $current_key += 1;
-    }
-}
+$data = $_REQUEST;
+$data2 = array(
+    "req_ip" => $req_ip,
+    "user_agent" => $user_agent,
+    "time" => $timestamp
+);
 
-error_log("---------- MAG API Query ----------");
-error_log("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
+$final_data = array_merge($data, $data2);
 
-$api_call = @file_get_contents("http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api&".$getdata);
+$url = "http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api";
+$ch = curl_init($url);
+$payload = json_encode( $final_data );
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+$result = curl_exec($ch);
+curl_close($ch);
 
-echo $api_call;
+echo $result;
 
 /*
 $set_settings = $db->query('SELECT * FROM cms_settings');
