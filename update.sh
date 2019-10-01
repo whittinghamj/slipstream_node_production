@@ -94,7 +94,7 @@ else
 	echo "Updating NGINX and restarting."
 	cp $file1 $file2
 	service nginx restart
-	service php-fom restart
+	service php7.2-fpm restart
 fi
 
 # ffmpeg fix
