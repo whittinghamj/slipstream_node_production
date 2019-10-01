@@ -1,5 +1,5 @@
 <?php
-error_log(var_dump($GLOBALS));
+error_log(print_r($GLOBALS));
 // require_once('_system/config/config.main.php');
 // require_once('_system/class/class.pdo.php');
 // $DBPASS = decrypt(PASSWORD);
