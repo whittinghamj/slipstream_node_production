@@ -49,6 +49,25 @@ $data2 = array(
 $final_data = array_merge($data, $data2);
 
 $url = "http://144.76.175.42/api/index.php?c=mag_device_api";
+
+$options = array(
+    'http' => array(
+        'method'  => 'POST',
+        'content' => json_encode( $final_data ),
+        'header'=>  "Content-Type: application/json\r\n" .
+        "Accept: application/json\r\n"
+    )
+);
+
+$context    = stream_context_create($options);
+$result     = file_get_contents($url, false, $context);
+$response   = json_decode($result, true);
+
+echo $result;
+
+/*
+
+$url = "http://144.76.175.42/api/index.php?c=mag_device_api";
 $payload = json_encode( $final_data );
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -58,6 +77,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($ch);
 curl_close ($ch);
 echo $result;
+*/
 
 /*
 $set_settings = $db->query('SELECT * FROM cms_settings');
