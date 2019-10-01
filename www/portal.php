@@ -12,6 +12,18 @@
 @header("Pragma: no-cache");
 @header("Content-type: text/javascript");
 
+error_log("---------- START _REQUEST");
+error_log(print_r($_REQUEST));
+error_log("---------- STOP _REQUEST");
+
+error_log("---------- START _POST");
+error_log(print_r($_POST));
+error_log("---------- STOP _POST");
+
+error_log("---------- START _GET");
+error_log(print_r($_GET));
+error_log("---------- STOP _GET");
+
 $data                       = array();
 
 $data['timestamp']          = time();
@@ -33,7 +45,7 @@ $data['continue']           = false;
 $data['debug']              = false;
 
 // error logging
-error_log(print_r($data));
+
 foreach($data as $key => $value){
     // error_log("MAG VAR: key = '".$key."'' => value = '".$value."'");
 }
@@ -49,6 +61,10 @@ $data2 = array(
 $final_data = array_merge($data, $data2);
 
 $url = "http://144.76.175.42/api/index.php?c=mag_device_api";
+
+error_log("---------- START FINAL_DATA");
+error_log(print_r($final_data));
+error_log("---------- STOP FINAL_DATA");
 
 $options = array(
     'http' => array(
