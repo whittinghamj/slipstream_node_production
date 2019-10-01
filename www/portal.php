@@ -12,30 +12,33 @@
 @header("Pragma: no-cache");
 @header("Content-type: text/javascript");
 
-$timestamp          = time();
-$req_ip             = (!empty($_SERVER["REMOTE_ADDR"])                  ? $_SERVER["REMOTE_ADDR"] : NULL);
-$req_type           = (!empty($_REQUEST["type"])                        ? $_REQUEST["type"] : NULL);
-$req_action         = (!empty($_REQUEST["action"])                      ? $_REQUEST["action"] : NULL);
-$sn                 = (!empty($_REQUEST["sn"])                          ? $_REQUEST["sn"] : NULL);
-$stb_type           = (!empty($_REQUEST["stb_type"])                    ? $_REQUEST["stb_type"] : NULL);
-$mac                = (!empty($_REQUEST["mac"])                         ? $_REQUEST["mac"] : NULL);
-$ver                = (!empty($_REQUEST["ver"])                         ? $_REQUEST["ver"] : NULL);
-$user_agent         = (!empty($_SERVER["HTTP_X_USER_AGENT"])            ? $_SERVER["HTTP_X_USER_AGENT"] : NULL);
-$image_version      = (!empty($_REQUEST["image_version"])               ? $_REQUEST["image_version"] : NULL);
-$device_id          = (!empty($_REQUEST["device_id"])                   ? $_REQUEST["device_id"] : NULL);
-$device_id2         = (!empty($_REQUEST["device_id2"])                  ? $_REQUEST["device_id2"] : NULL);
-$hw_version         = (!empty($_REQUEST["hw_version"])                  ? $_REQUEST["hw_version"] : NULL);
-$gmode              = (!empty($_REQUEST["gmode"])                       ? intval($_REQUEST["gmode"]) : NULL);
-$continue           = false;
-$debug              = false;
+$data                       = array();
+
+$data['timestamp']          = time();
+$data['req_ip']             = (!empty($_SERVER["REMOTE_ADDR"])                  ? $_SERVER["REMOTE_ADDR"] : NULL);
+$data['req_type']           = (!empty($_REQUEST["type"])                        ? $_REQUEST["type"] : NULL);
+$data['type']               = (!empty($_REQUEST["type"])                        ? $_REQUEST["type"] : NULL);
+$data['req_action']         = (!empty($_REQUEST["action"])                      ? $_REQUEST["action"] : NULL);
+$data['sn']                 = (!empty($_REQUEST["sn"])                          ? $_REQUEST["sn"] : NULL);
+$data['stb_type']           = (!empty($_REQUEST["stb_type"])                    ? $_REQUEST["stb_type"] : NULL);
+$data['mac']                = (!empty($_REQUEST["mac"])                         ? $_REQUEST["mac"] : NULL);
+$data['ver']                = (!empty($_REQUEST["ver"])                         ? $_REQUEST["ver"] : NULL);
+$data['user_agent']         = (!empty($_SERVER["HTTP_X_USER_AGENT"])            ? $_SERVER["HTTP_X_USER_AGENT"] : NULL);
+$data['image_version']      = (!empty($_REQUEST["image_version"])               ? $_REQUEST["image_version"] : NULL);
+$data['device_id']          = (!empty($_REQUEST["device_id"])                   ? $_REQUEST["device_id"] : NULL);
+$data['device_id2']         = (!empty($_REQUEST["device_id2"])                  ? $_REQUEST["device_id2"] : NULL);
+$data['hw_version']         = (!empty($_REQUEST["hw_version"])                  ? $_REQUEST["hw_version"] : NULL);
+$data['gmode']              = (!empty($_REQUEST["gmode"])                       ? intval($_REQUEST["gmode"]) : NULL);
+$data['continue']           = false;
+$data['debug']              = false;
 
 // error logging
-foreach($_REQUEST as $key => $value){
+foreach($data as $key => $value){
     error_log("MAG VAR: key = '".$key."'' => value = '".$value."'");
 }
 
 //Query String compile fix.
-$data = $_REQUEST;
+// $data = $_REQUEST;
 $data2 = array(
     "req_ip" => $req_ip,
     "user_agent" => $user_agent,
@@ -45,14 +48,14 @@ $data2 = array(
 $final_data = array_merge($data, $data2);
 
 $url = "http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api";
-$ch = curl_init($url);
 $payload = json_encode( $final_data );
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
-curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"http://hub.slipstreamiptv.com/api/index.php?c=mag_device_api");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('payload' => $payload)));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($ch);
-curl_close($ch);
-
+curl_close ($ch);
 echo $result;
 
 /*
