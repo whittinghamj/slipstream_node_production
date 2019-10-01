@@ -42,7 +42,7 @@ $data['device_id2']         = (!empty($_REQUEST["device_id2"])                  
 $data['hw_version']         = (!empty($_REQUEST["hw_version"])                  ? $_REQUEST["hw_version"] : NULL);
 $data['gmode']              = (!empty($_REQUEST["gmode"])                       ? intval($_REQUEST["gmode"]) : NULL);
 $data['continue']           = false;
-$data['debug']              = false;
+$data['debug']              = true;
 
 // error logging
 
@@ -66,6 +66,7 @@ error_log("---------- START FINAL_DATA");
 error_log(print_r($final_data));
 error_log("---------- STOP FINAL_DATA");
 
+/*
 $options = array(
     'http' => array(
         'method'  => 'POST',
@@ -78,6 +79,21 @@ $options = array(
 $context    = stream_context_create($options);
 $result     = file_get_contents($url, false, $context);
 $response   = json_decode($result, true);
+*/
+
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, $url );
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+curl_setopt( $ch, CURLOPT_VERBOSE, true );
+curl_setopt( $ch, CURLOPT_HEADER, true );
+curl_setopt( $ch, CURLOPT_TIMEOUT, $this->timeout_limit );
+curl_setopt( $ch, CURLOPT_ENCODING, '' );
+curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
+curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
+curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $final_data ) );
+curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+) );
 
 echo $result;
 
