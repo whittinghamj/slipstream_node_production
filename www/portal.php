@@ -1,4 +1,4 @@
-<?php
+    <?php
 // require_once('_system/config/config.main.php');
 // require_once('_system/class/class.pdo.php');
 // $DBPASS = decrypt(PASSWORD);
@@ -28,6 +28,11 @@ $hw_version         = (!empty($_REQUEST["hw_version"])                  ? $_REQU
 $gmode              = (!empty($_REQUEST["gmode"])                       ? intval($_REQUEST["gmode"]) : NULL);
 $continue           = false;
 $debug              = false;
+
+// error logging
+foreach($_REQUEST as $key => $value){
+    error_log("MAG VarL ".$key." => ".$value);
+}
 
 //Query String compile fix.
 $data = $_REQUEST;
