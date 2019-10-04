@@ -1,1 +1,1 @@
-{"uuid":"xxxxxxxx","login":{"username":"admin","password":"admin"},"hub":{"server":"hub.slipstreamiptv.com"}}
+{"uuid":"server_uuid","login":{"username":"admin","password":"admin"},"hub":{"server":"main_server_ip"}}
