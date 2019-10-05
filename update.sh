@@ -74,22 +74,22 @@ if [ "$sudo_status" -eq "0" ]; then
 fi
 
 # check for updated nginx.conf file
-file1="/root/slipstream/node/config/nginx.conf"
-file2="/etc/nginx/nginx.conf"
+# file1="/root/slipstream/node/config/nginx.conf"
+# file2="/etc/nginx/nginx.conf"
 
-if cmp -s "$file1" "$file2"; then
+# if cmp -s "$file1" "$file2"; then
 	# printf 'The file "%s" is the same as "%s"\n' "$file1" "$file2"
-	echo ""
-else
+#	echo ""
+# else
 	# printf 'The file "%s" is different from "%s"\n' "$file1" "$file2"
-	echo "Updating NGINX and restarting."
-	cp $file1 $file2
-	service nginx restart
-	service php7.2-fpm restart
-fi
+#	echo "Updating NGINX and restarting."
+#	cp $file1 $file2
+# 	service nginx restart
+# 	service php7.2-fpm restart
+# fi
 
 # ffmpeg fix
-command -v ffmpeg >/dev/null 2>&1 || { sudo apt update -y; sudo apt-get install ffmpeg -y; }
+# command -v ffmpeg >/dev/null 2>&1 || { sudo apt update -y; sudo apt-get install ffmpeg -y; }
 
 # restart php-fpm
 # systemctl restart php7.2-fpm.service
