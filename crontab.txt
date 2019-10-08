@@ -1,5 +1,5 @@
 # Slipstream CMS Main Server - HTTP Server
-@rebot /usr/local/nginx/sbin/nginx
+@reboot /usr/local/nginx/sbin/nginx
 
 # Slipstream CMS Main Server - GIT Update
 * * * * * sh /var/www/html/portal/update.sh
