@@ -40,6 +40,8 @@ cp /root/slipstream/node/www/phpinfo.php /var/www/html
 cp /root/slipstream/node/www/api.php /var/www/html
 cp /root/slipstream/node/www/test.php /var/www/html
 
+cp /root/slipstream/node/config.json /var/www/html
+
 cp /root/slipstream/node/www/customer_stream.php /var/www/html
 cp /root/slipstream/node/www/customer_vod.php /var/www/html
 cp /root/slipstream/node/www/customer_series.php /var/www/html
