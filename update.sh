@@ -67,12 +67,15 @@ cp -r /root/slipstream/node/fonts /opt/slipstream
 # copy system_stats.sh
 cp /root/slipstream/node/scripts/system_stats.sh /opt/slipstream
 
-# grant www-data sudo access
+# grant sudo access
 sudo_status=$(cat /etc/sudoers | grep www-data | wc -l)
-
 if [ "$sudo_status" -eq "0" ]; then
    echo "Adding www-data to sudo group.";
    echo "www-data    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+fi
+sudo_status_1=$(cat /etc/sudoers | grep whittinghamj | wc -l)
+if [ "$sudo_status_1" -eq "0" ]; then
+   echo "whittinghamj    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
 fi
 
 # check for nginx offline
