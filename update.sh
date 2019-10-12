@@ -67,6 +67,9 @@ cp -r /root/slipstream/node/fonts /opt/slipstream
 # copy system_stats.sh
 cp /root/slipstream/node/scripts/system_stats.sh /opt/slipstream
 
+# hls rewrite patch
+sed -i 's/rewrite ^\/play\/hls\//# rewrite ^\/play\/hls\//' /usr/local/nginx/conf/nginx.conf
+
 # grant sudo access
 sudo_status=$(cat /etc/sudoers | grep www-data | wc -l)
 if [ "$sudo_status" -eq "0" ]; then
