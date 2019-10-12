@@ -70,6 +70,29 @@ cp /root/slipstream/node/scripts/system_stats.sh /opt/slipstream
 # hls rewrite patch
 sed -i 's/rewrite ^\/play\/hls\// /' /usr/local/nginx/conf/nginx.conf
 
+# mission ioncube sanity check
+ioncube_cgi=$(cat /etc/php/7.2/cgi/php.ini | grep ioncube | wc -l)
+if [ "$ioncube_cgi" -eq "0" ]; then
+   echo "zend_extension=/opt/ioncube/ioncube_loader_lin_7.2.so" >> /etc/php/7.2/cgi/php.ini
+   service php7.2-fpm restart
+   killall nginx
+   /usr/local/nginx/sbin/nginx
+fi
+ioncube_cli=$(cat /etc/php/7.2/cli/php.ini | grep ioncube | wc -l)
+if [ "$ioncube_cli" -eq "0" ]; then
+   echo "zend_extension=/opt/ioncube/ioncube_loader_lin_7.2.so" >> /etc/php/7.2/cli/php.ini
+   service php7.2-fpm restart
+   killall nginx
+   /usr/local/nginx/sbin/nginx
+fi
+ioncube_fpm=$(cat /etc/php/7.2/fpm/php.ini | grep ioncube | wc -l)
+if [ "$ioncube_fpm" -eq "0" ]; then
+   echo "zend_extension=/opt/ioncube/ioncube_loader_lin_7.2.so" >> /etc/php/7.2/fpm/php.ini
+   service php7.2-fpm restart
+   killall nginx
+   /usr/local/nginx/sbin/nginx
+fi
+
 # grant sudo access
 sudo_status=$(cat /etc/sudoers | grep www-data | wc -l)
 if [ "$sudo_status" -eq "0" ]; then
