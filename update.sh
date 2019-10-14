@@ -109,7 +109,6 @@ fi
 
 # check for nginx offline
 nginx_status=$(ps aux | grep nginx | grep -v 'grep' | wc -l)
-
 if [ "$nginx_status" -eq "0" ]; then
    echo "Starting NGINX Streaming Server.";
    /usr/local/nginx/sbin/nginx
