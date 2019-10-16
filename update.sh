@@ -2,10 +2,11 @@
 
 # bash git update script
 
-echo "SlipStream CMS Streaming Server - Update Script v1"
+echo "SlipStream CMS Streaming Server - Update Script v2"
 
 echo "Checking github.com for updates."
-cd /root/slipstream/node && git --git-dir=/root/slipstream/node/.git pull origin master
+cd /root/slipstream/node
+git --git-dir=/root/slipstream/node/.git pull -q origin master
 
 # crontab -l > /root/slipstream/node/cronjobs; 
 # cat cronjobs >> /root/slipstream/node/crontab.txt; 
@@ -41,6 +42,7 @@ cp /root/slipstream/node/www/api.php /var/www/html
 cp /root/slipstream/node/www/test.php /var/www/html
 
 cp /root/slipstream/node/config.json /var/www/html
+cp /root/slipstream/node/config.json /var/www/html/portal
 
 cp /root/slipstream/node/www/customer_stream.php /var/www/html
 cp /root/slipstream/node/www/customer_vod.php /var/www/html
