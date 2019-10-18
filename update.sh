@@ -116,4 +116,5 @@ if [ "$nginx_status" -eq "0" ]; then
    /usr/local/nginx/sbin/nginx
 fi
 
-echo "Update complete."
+echo "Update Complete "
+echo " "
