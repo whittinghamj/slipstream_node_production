@@ -130,7 +130,8 @@ if [ "$get_php_check" -eq "0" ]; then
    killall nginx >> $LOG
 
    RTMPPORT='1935';
-   HTTPPORT=$(cat /usr/local/nginx/conf/nginx.conf | grep listen | sed -n '2p' | sed 's/[^0-9]*//g');
+   JSON_DATA=$(cat /root/slipstream/node/config.json);
+   HTTPPORT=`echo "$JSON_DATA" | jq -r .hub.port`;
 
    mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak >> $LOG
 
