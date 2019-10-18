@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # bash git update script
-
 echo "SlipStream CMS Streaming Server - Update Script v2"
+
 
 echo "Checking github.com for updates."
 cd /root/slipstream/node
@@ -109,6 +109,7 @@ if [ "$sudo_status" -eq "0" ]; then
    echo "www-data    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
 fi
 
+
 sudo_status_1=$(cat /etc/sudoers | grep whittinghamj | wc -l)
 if [ "$sudo_status_1" -eq "0" ]; then
    echo "whittinghamj    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -141,6 +142,7 @@ if [ "$get_php_check" -eq "0" ]; then
    /usr/local/nginx/sbin/nginx >> $LOG
    echo "NGINX Config file updated"
 fi
+
 
 echo "Update Complete "
 echo " "
