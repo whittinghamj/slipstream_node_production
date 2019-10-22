@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # bash git update script
-echo "SlipStream CMS Streaming Server - Update Script v2"
+echo "SlipStream CMS Streaming Server - Update Script v2.2.1"
 
 
 echo "Checking github.com for updates."
@@ -33,6 +33,7 @@ chmod 777 /var/www/html/play/channels/*
 
 # copy files for http server
 echo "Copying source to target file locations."
+cp /root/slipstream/node/node_version.txt /var/www/html
 cp /root/slipstream/node/www/stream_progress.php /var/www/html
 cp /root/slipstream/node/www/stream.php /var/www/html
 cp /root/slipstream/node/www/streams.php /var/www/html
