@@ -125,7 +125,7 @@ fi
 
 
 # update nginx conf file
-get_php_check=$(cat /usr/local/nginx/conf/nginx.conf | grep 'ss_v_2.1' | wc -l)
+get_php_check=$(cat /usr/local/nginx/conf/nginx.conf | grep 'ss_v_2.2' | wc -l)
 if [ "$get_php_check" -eq "0" ]; then
    killall nginx >> $LOG
 
