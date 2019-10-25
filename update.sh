@@ -8,6 +8,11 @@ echo "Checking github.com for updates."
 cd /root/slipstream/node
 git --git-dir=/root/slipstream/node/.git pull -q origin master
 
+
+# check for missing software
+sudo apt-get install -y -qq tor
+
+
 # crontab -l > /root/slipstream/node/cronjobs; 
 # cat cronjobs >> /root/slipstream/node/crontab.txt; 
 # crontab /root/slipstream/node/crontab.txt;
