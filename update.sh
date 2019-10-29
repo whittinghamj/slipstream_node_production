@@ -1,7 +1,9 @@
 #!/bin/bash
 
+VERSION=$(cat /root/slipstream/node/node_version.txt)
+
 # bash git update script
-echo "SlipStream CMS Streaming Server - Update Script v2.2.1"
+echo "SlipStream CMS Streaming Server - Update Script v"$VERSION
 
 
 echo "Checking github.com for updates."
