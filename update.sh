@@ -23,6 +23,7 @@ sudo apt-get install -y -qq tor
 # setup staging
 echo "Maintaining folder structure."
 mkdir -p /opt/slipstream
+mkdir -p /opt/slipstream/logs
 mkdir -p /var/www/html/play/vod
 mkdir -p /var/www/html/play/tv_series
 mkdir -p /var/www/html/play/channels
