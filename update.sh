@@ -160,7 +160,7 @@ command -v filebot >/dev/null 2>&1 || {
    mkdir -p /opt/filebot >> $LOG
    cd /opt/filebot >> $LOG
    curl -L -O https://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.9/filebot_4.7.9_amd64.deb >> $LOG
-   sudo dpkg -i /opt/filebot_4.7.9_amd64.deb >> $LOG
+   sudo dpkg -i /opt/filebot/filebot_4.7.9_amd64.deb >> $LOG
    sudo apt-get install -y -qq openjfx >> $LOG
    sudo apt-get install -y -qq openjdk-8-jre >> $LOG
    sudo apt-get install -y -qq default-jre >> $LOG
