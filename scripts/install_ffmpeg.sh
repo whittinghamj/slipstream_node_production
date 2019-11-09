@@ -1,50 +1,71 @@
 #!/bin/bash
+#
+#////////////////////////////////////////////////////////////
+#===========================================================
+# SlipStream FFMPEG Installer
+#===========================================================
+# set environment
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LOG=/tmp/slipstream.log
 
-(( UID != 0 )) && { echo "Error: you MUST be logged in as root."; exit 1; }
+apt-get update 
+apt-get install -y intel-igc-* intel-opencl* intel-cloc intel-cmt-cat 
+apt-get install -y ccache flex bison cmake g++ git patch zlib1g-dev autoconf xutils-dev libtool pkg-config libpciaccess-dev libz-dev clinfo 
+apt-get install -y lsof dvb-apps w-scan dtv-scan-tables dvb-tools dvblast dvbsnoop dvbstream dvbstreamer dvbtune getstream libdvbv5-0 libbitstream-dev libdvbpsi-dev opencaster 
+apt-get install -y tvoe yasm alsa-base alsa-utils fontconfig* fribidi* libass* autoconf automake build-essential cmake git-core libass-dev libfreetype6-dev libsdl2-dev libtool 
+apt-get install -y libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev nasm yasm libx264-dev libx265-dev 
+apt-get install -y libssl-dev freeglut3 freeglut3-dev libxi-dev libxmu-dev 
+apt-get install -y libvpx-dev libmp3lame-dev libopus-dev ocl-icd-opencl-dev opencl-headers libva-dev vainfo 
 
-echo "Installing FFMpeg"
+sudo apt-get remove --purge ffmpeg -y 
+rm -rf /usr/bin/ffprobe 
+rm -rf /usr/bin/ffmpeg 
+rm -rf /opt/ffmpeg 
+mkdir -p /opt/ffmpeg 
+cd /opt/ffmpeg 
 
-# apt-get install -y ubuntu-drivers-common freeglut3 freeglut3-dev libxi-dev libxmu-dev
+apt-get remove --purge nvidia* -y 
 
-# sudo ubuntu-drivers autoinstall mingw-w64
+# UNINSTALL CUDA DRIVERS
+apt-get --purge remove cuda -y 
+apt autoremove -y 
+apt-get clean -y 
 
-# mkdir /root/nvidia
-# cd /root/nvidia
+# INSTALL NVIDIA DRIVERS
+apt-get update 
+apt-get install software-properties-common -y 
+DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y 
+add-apt-repository ppa:graphics-drivers/ppa -y 
+apt-get update 
+DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y 
+DEBIAN_FRONTEND=noninteractive apt-get install nvidia-kernel-source-415 nvidia-driver-415 -y 
 
-# wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.105-1_amd64.deb
-# sudo dpkg -i cuda-repo-ubuntu1804_10.1.105-1_amd64.deb
-# sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-# sudo apt-get update
-# sudo apt-get install -y cuda
+# INSTALL CUDA DRIVERS
+wget -c -v -nc https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb 
+dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb 
+apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub 
+apt-get update 
+DEBIAN_FRONTEND=noninteractive apt-get install cuda -y 
+DEBIAN_FRONTEND=noninteractive apt-get install cuda-libraries-10-0 -y 
 
-# mkdir $HOME/nv-codec-headers_build && cd $HOME/nv-codec-headers_build
-# git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-# cd nv-codec-headers
-# make && sudo make install
+apt-get install git -y 
+git clone https://github.com/keylase/nvidia-patch.git 
+cd nvidia-patch && ./patch.sh 
 
-sudo apt-get update -qq && sudo apt-get -y install autoconf automake build-essential cmake git-core libass-dev libfreetype6-dev libsdl2-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo wget zlib1g-dev
+# download ffprobe binary
+cd /opt/ffmpeg
+wget https://github.com/vot/ffbinaries-prebuilt/releases/download/v4.1/ffprobe-4.1-linux-64.zip 
+unzip ffprobe-4.1-linux-64.zip 
+rm -rf __MACOSX 
+cp ffprobe /usr/bin 
 
-mkdir -p ~/ffmpeg_sources ~/bin
+# download static ffmpeg
+# wget http://slipstreamiptv.com/downloads/nvenc.rar
+wget https://www.dropbox.com/s/y9aar785362s00k/nvenc.rar 
+unrar x nvenc.rar 
+chmod +x /opt/ffmpeg/nvenc/dehash/bin/ffmpeg 
+chmod +x /opt/ffmpeg/nvenc/dehash/bin/ffmpeg_original 
 
-sudo apt-get install nasm yasm libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev
+ln -s /opt/ffmpeg/nvenc/dehash/bin/ffmpeg /usr/bin/ffmpeg 
 
-cd ~/ffmpeg_sources
-git -C aom pull 2> /dev/null || git clone --depth 1 https://aomedia.googlesource.com/aom
-mkdir -p aom_build
-cd aom_build
-PATH="$HOME/bin:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED=off -DENABLE_NASM=on ../aom
-PATH="$HOME/bin:$PATH" make
-make install
-
-cd ~/ffmpeg_sources
-wget -O ffmpeg-snapshot.tar.bz2 https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2
-tar xjvf ffmpeg-snapshot.tar.bz2
-cd ffmpeg
-PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure --prefix="$HOME/ffmpeg_build" --pkg-config-flags="--static" --extra-cflags="-I$HOME/ffmpeg_build/include" --extra-ldflags="-L$HOME/ffmpeg_build/lib" --extra-libs="-lpthread -lm" --bindir="$HOME/bin" --enable-gpl --enable-libaom --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-openssl
-PATH="$HOME/bin:$PATH" make
-make install
-hash -r
-
-cp /root/ffmpeg_sources/ffmpeg/ffmpeg /usr/bin
-cp /root/ffmpeg_sources/ffmpeg/ffprobe /usr/bin
-
+echo "Finished. "
