@@ -9,7 +9,7 @@ echo "SlipStream Streaming Server - Upgrade Script"
 
 
 # go into staging area
-cd /root/slipstream/portal >> $LOG
+cd /root/slipstream/node >> $LOG
 
 
 # force nginx update
