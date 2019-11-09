@@ -156,7 +156,14 @@ fi
 
 
 # check if filebot is installed, if not, install it.
-command -v filebot >/dev/null 2>&1 || { cd /opt; curl -L -O https://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.9/filebot_4.7.9_amd64.deb; sudo dpkg -i /opt/filebot_4.7.9_amd64.deb; sudo apt-get install -y -qq openjfx; sudo apt-get install -y -qq openjdk-8-jre; sudo apt-get install -y -qq default-jre; } >> $LOG
+command -v filebot >/dev/null 2>&1 || {
+   cd /opt >> $LOG
+   curl -L -O https://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.9/filebot_4.7.9_amd64.deb >> $LOG
+   sudo dpkg -i /opt/filebot_4.7.9_amd64.deb >> $LOG
+   sudo apt-get install -y -qq openjfx >> $LOG
+   sudo apt-get install -y -qq openjdk-8-jre >> $LOG
+   sudo apt-get install -y -qq default-jre >> $LOG
+}
 
 
 echo "Update Complete "
