@@ -61,9 +61,12 @@ rm -rf __MACOSX
 cp ffprobe /usr/bin 
 
 # download static ffmpeg
-# wget http://slipstreamiptv.com/downloads/nvenc.rar
-wget https://www.dropbox.com/s/y9aar785362s00k/nvenc.rar 
-unrar x nvenc.rar 
+rm -rf /usr/bin/ffprobe 
+rm -rf /usr/bin/ffmpeg 
+wget http://slipstreamiptv.com/downloads/nvenc.zip
+unzip nvenc.zip
+# wget https://www.dropbox.com/s/y9aar785362s00k/nvenc.rar 
+# unrar x nvenc.rar 
 chmod +x /opt/ffmpeg/nvenc/dehash/bin/ffmpeg 
 chmod +x /opt/ffmpeg/nvenc/dehash/bin/ffmpeg_original 
 
