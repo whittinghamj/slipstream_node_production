@@ -9,6 +9,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 LOG=/tmp/slipstream.log
 
 apt-get update 
+apt-get install -y unrar-free
 apt-get install -y intel-igc-* intel-opencl* intel-cloc intel-cmt-cat 
 apt-get install -y ccache flex bison cmake g++ git patch zlib1g-dev autoconf xutils-dev libtool pkg-config libpciaccess-dev libz-dev clinfo 
 apt-get install -y lsof dvb-apps w-scan dtv-scan-tables dvb-tools dvblast dvbsnoop dvbstream dvbstreamer dvbtune getstream libdvbv5-0 libbitstream-dev libdvbpsi-dev opencaster 
