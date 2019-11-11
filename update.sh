@@ -134,6 +134,14 @@ if [ "$nginx_status" -eq "0" ]; then
 fi
 
 
+# check for ffprobe
+ffprobe_installed=$(ls /usr/bin | grep ffrpobe | wc -l)
+if [ "$ffprobe_installed" -eq "0" ]; then
+   echo "Installing FFPROBE.";
+   cp /opt/ffmpeg/ffprobe /usr/bin
+fi
+
+
 # update nginx conf file
 get_php_check=$(cat /usr/local/nginx/conf/nginx.conf | grep 'ss_v_2.2' | wc -l)
 if [ "$get_php_check" -eq "0" ]; then
