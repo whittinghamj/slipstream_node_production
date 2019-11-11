@@ -56,6 +56,7 @@ cp /root/slipstream/node/www/customer_stream.php /var/www/html
 cp /root/slipstream/node/www/customer_vod.php /var/www/html
 cp /root/slipstream/node/www/customer_series.php /var/www/html
 cp /root/slipstream/node/www/customer_channel.php /var/www/html
+cp /root/slipstream/node/www/customer_dev.php /var/www/html
 cp /root/slipstream/node/www/server_stats.php /var/www/html
 cp /root/slipstream/node/www/scan_folder_folders.php /var/www/html
 cp /root/slipstream/node/www/scan_folder_files.php /var/www/html
@@ -135,7 +136,7 @@ fi
 
 
 # check for ffprobe
-ffprobe_installed=$(ls /usr/bin | grep ffrpobe | wc -l)
+ffprobe_installed=$(ls /usr/bin | grep ffprobe | wc -l)
 if [ "$ffprobe_installed" -eq "0" ]; then
    echo "Installing FFPROBE.";
    cp /opt/ffmpeg/ffprobe /usr/bin
