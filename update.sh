@@ -176,5 +176,10 @@ fi
 # }
 
 
+# disable ipv6
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 >> $LOG
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6= >> $LOG
+
+
 echo "Update Complete "
 echo " "
