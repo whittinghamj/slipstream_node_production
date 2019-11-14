@@ -24,5 +24,5 @@ sh update.sh >> $LOG
 sh update.sh >> $LOG
 
 
-echo "Upgrade Complete "
+echo "Upgrade Complete"
 echo " "
