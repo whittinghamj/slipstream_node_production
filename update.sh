@@ -53,6 +53,7 @@ cp /root/slipstream/node/www/test.php /var/www/html
 cp /root/slipstream/node/config.json /var/www/html
 cp /root/slipstream/node/config.json /var/www/html/portal
 cp /root/slipstream/node/www/customer_stream.php /var/www/html
+cp /root/slipstream/node/www/server_stream.php /var/www/html
 cp /root/slipstream/node/www/customer_vod.php /var/www/html
 cp /root/slipstream/node/www/customer_series.php /var/www/html
 cp /root/slipstream/node/www/customer_channel.php /var/www/html
