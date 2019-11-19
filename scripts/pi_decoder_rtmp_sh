@@ -1,0 +1,45 @@
+#!/bin/sh
+clear
+stty -isig
+echo "For Details Visit: https://www.worldofiptv.com/"
+
+# omxplayer sanity check
+command -v omxplayer >/dev/null 2>&1 || { sudo apt-get install -y -qq omxplayer; } >> $LOG
+
+# dont flood the system
+sleep 2
+
+# check online status
+ping -c1 -s1 www.google.com
+pingStatus=$?
+
+# results of online status check
+if [ $pingStatus = "0" ] then
+	# we are online, lets stream
+
+	#clear the screen contents
+	clear
+
+	echo "Stream Starting Please wait..."
+
+	# launch the stream
+	omxplayer -o hdmi --no-keys --vol 600 rtmp://localhost:1935/live/mystream
+else
+	# internet appears offline, launch mp4 placeholder
+
+	#clear the screen contents
+	clear
+
+	echo "Internet disconnected. Please check Internet"
+
+	# dont flood the system
+	sleep 1
+
+	echo "Starting Promo"
+
+	# dont flood the system
+	sleep 1
+
+	# launch mp4 placeholder
+	omxplayer -o hdmi --no-keys --vol 600 /home/pi/promo.mp4
+fi
