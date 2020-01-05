@@ -136,6 +136,19 @@ if [ "$nginx_status" -eq "0" ]; then
 fi
 
 
+# check for ffmpeg
+ffmpeg_installed=$(ls /usr/bin | grep ffmpeg | wc -l)
+if [ "$ffmpeg_installed" -eq "0" ]; then
+   echo "Installing FFMPEG.";
+   cd /opt/ffmpeg
+   wget http://slipstreamiptv.com/downloads/nvenc.zip
+   unzip nvenc.zip
+   chmod +x /opt/ffmpeg/nvenc/dehash/bin/ffmpeg
+   ln -s /opt/ffmpeg/nvenc/dehash/bin/ffmpeg /usr/bin/ffmpeg
+   cd /root/slipstream/node
+fi
+
+
 # check for ffprobe
 ffprobe_installed=$(ls /usr/bin | grep ffprobe | wc -l)
 if [ "$ffprobe_installed" -eq "0" ]; then
